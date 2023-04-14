@@ -1,4 +1,4 @@
-from Character import Character as char
+from FilesProject.Game_system import Character as char
 from BattleSim import BattleSim as bs
 import random as rd
 # lvl, pdr, pre, def, con
