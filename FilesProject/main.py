@@ -1,6 +1,7 @@
 from Game_system import Game_system as gs
 from Game_system import Character as char
 import random as rd
+import numpy as np
  
 def create_population (n,lvl):
     """Creates the population of n individuals of level lvl"""
@@ -18,8 +19,12 @@ def battle (player,NPC):
     of the winner in the input list.
     Input: Player and NPC that will be fighting
     Output: True for NPC WIN"""
-    finish = False
-    while finish==False:
+    limit_round = 30
+    rounds = 0
+    player.reset_hp()
+    NPC.reset_hp()
+
+    while rounds < limit_round:
         if player.attack(NPC):
             NPC.update_hp(-player.pdr)
             if NPC.hp < 1:
@@ -28,6 +33,8 @@ def battle (player,NPC):
             player.update_hp(-NPC.pdr)
             if player.hp < 1:
                 return True
+        rounds += 1
+    return True
 
 
  #Funcao a ser optimizada: Numero de vitorias em X batalhas.
@@ -39,14 +46,14 @@ goal = 60
 ref = char(15, 1, 5, 12 , 4)
 
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
-battle_number = 5
+battle_number = 1000
 #Actual desired number of wins to be considered in the algorithm.
 true_goal = int(battle_number * goal/100)  
 
 #Initial Population 
-pop = create_population(10,ref.lvl)
+pop = create_population(100,ref.lvl)
 
-#Evaluation of the first population
+#Battles of the first population
 """In the evalution, each member of the population will fight the
 reference characters [battle_number] times"""
 wins = 0
@@ -58,6 +65,14 @@ for enemy in pop:
     result.append(wins)
     wins = 0 
 
+#Getting how far from the goal each individual is
+tgoal_diff = []
 for each in result:
-    print(each)
+    tgoal_diff.append(abs(each-true_goal))
+
+teste = [4,2,4,-3,1]
+# 4,1,3,0,2
+print(np.argsort(teste))
+
+
 
