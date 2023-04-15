@@ -1,5 +1,8 @@
 import random as rd
 
+class AttrOutOfRangeError(Exception):
+    pass
+
 class Game_system():
 
     def roll_dices(self):
@@ -14,6 +17,8 @@ class Game_system():
         """The attacker calls this function and gives its target as argument.
         It returns true if the attack was successfull, False if not."""
         dices = self.roll_dices()
+        #print("ATK:",self.pre+self.lvlbonus+dices)
+        #print("DEF:",target.defense)
         if (self.pre+self.lvlbonus+dices) > target.defense:
             return True
         else:
@@ -34,16 +39,23 @@ class Character(Game_system):
         - Each lvl grants 1 point. In lvl 1 -> 1 Point to distribute;
         - Bonus Point depeding on the Race. Here this bonus is considered by the
         distribution of lvl+1 points. The extra point is the bonus point."""
+
+        if (pdr) < 1 or (pre) < 1 or (defe) < 1:
+            raise AttrOutOfRangeError("POWER, PRECISION or DEFENSE is smaller than 1")
+        elif (con) < 3:
+            raise AttrOutOfRangeError("CONSTITUION is smaller than 3")
+        elif (pdr+pre+defe+con) > lvl+7:
+            raise AttrOutOfRangeError("Max atributes must be lvl+7")
+
         self.lvl = lvl
         self.pdr = pdr
         self.pre = pre 
         self.defe = defe
         self.con = con
-        self.atrib_sum = self.pdr + self.pre + self.defe + self.con
         self.lvlbonus = int(self.lvl*3/4)
         self.defense = self.defe + self.lvlbonus + 10
         self.hp = con
-        
+
     def __str__(self):
         return ("Level: "+ str(self.lvl)+"\n"+
                 "PODER: "+ str(self.pdr)+"\n"+
@@ -53,4 +65,4 @@ class Character(Game_system):
                 "HP: "+ str(self.hp)+"\n"+
                 "Nivel Defesa: "+str(self.defense)+"\n")   
 
-    
+

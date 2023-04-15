@@ -35,3 +35,5 @@ There are rules for character creation:
     - Each lvl grants 1 point. In lvl 1 -> 1 Point to distribute;
     - Bonus Point depeding on the Race. Here this bonus is considered by the
         distribution of lvl+1 points. The extra point is the bonus point.
+
+*** During a battle the reference player always attacks first.
