@@ -70,6 +70,15 @@ tgoal_diff = []
 for each in result:
     tgoal_diff.append(abs(each-true_goal))
 
+for i,each in enumerate(result):
+    if each > true_goal:
+        print("WON ",each,"times.")
+        print(pop[i])
+        print("=======")
+
+#TODO CONVERTER PARA BINARIO E APLICAR MUTACAO E CROSSOVER
+#NO FINAL VERIFICAR SE É UM PERSONAGEM VÁLIDO
+
 teste = [4,2,4,-3,1]
 # 4,1,3,0,2
 print(np.argsort(teste))
