@@ -1,5 +1,6 @@
 from Game_system import Game_system as gs
 from Game_system import Character as char
+from Game_system import toolbox
 import random as rd
 import numpy as np
  
@@ -46,7 +47,7 @@ goal = 60
 ref = char(15, 1, 5, 12 , 4)
 
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
-battle_number = 1000
+battle_number = 10
 #Actual desired number of wins to be considered in the algorithm.
 true_goal = int(battle_number * goal/100)  
 
@@ -70,18 +71,28 @@ tgoal_diff = []
 for each in result:
     tgoal_diff.append(abs(each-true_goal))
 
-for i,each in enumerate(result):
+"""for i,each in enumerate(result):
     if each > true_goal:
         print("WON ",each,"times.")
         print(pop[i])
-        print("=======")
+        print("=======")"""
 
 #TODO CONVERTER PARA BINARIO E APLICAR MUTACAO E CROSSOVER
+tb = toolbox(5)
+print(ref)
+print("============")
+genes = tb.char2gene(ref)
+print("genes origin",genes)
+print("origin converted", tb.gene2char(genes))
 #NO FINAL VERIFICAR SE É UM PERSONAGEM VÁLIDO
 
-teste = [4,2,4,-3,1]
+#teste = [4,2,4,-3,1]
 # 4,1,3,0,2
-print(np.argsort(teste))
+#print(np.argsort(teste))
 
+#00001 00101 01100 00100
 
+mutation = tb.mutation(genes,0.1)
+print("genesmutated",mutation)
+print("mutation converted", tb.gene2char(mutation))
 

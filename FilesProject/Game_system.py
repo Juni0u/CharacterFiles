@@ -65,4 +65,47 @@ class Character(Game_system):
                 "HP: "+ str(self.hp)+"\n"+
                 "Nivel Defesa: "+str(self.defense)+"\n")   
 
+class toolbox():
+    """binrep = how many bits represents each atribute"""
+    def __init__(self,binrep):
+        self.binrep = binrep
 
+    def dec2bin(self,n):
+        """Input: A number in decimal
+        Output: The same in 5 bit binary"""
+        output = bin(n)[2:].zfill(5)
+        return(output)
+    
+    def char2gene(self,char):
+        """Input: Character (object)
+        Output: Character's attributes coded into binary"""
+        binPdr=self.dec2bin(char.pdr)
+        binPre=self.dec2bin(char.pre)
+        binDefe=self.dec2bin(char.defe)
+        binCon=self.dec2bin(char.con) 
+        return binPdr+binPre+binDefe+binCon
+    
+    def gene2char(self,bin):
+        """Input: Binary
+        Output: List [PDR,PRE,DEFE,CON]"""
+        output = []
+        for i in range(0,len(bin),5):
+            output.append(int(bin[i:i+5],2))
+        return output
+    
+    def mutation (self,gene,prob):
+        #mut_prob = rd.randint(0,100)
+        gene = list(gene)
+        mut_prob = 0.05
+        if mut_prob < prob*100:
+            #TODO: AJUSTAR A FUNCAO DE MUTACAO
+            #COMO FAZER? DEVO "CONSERTAR" O BONECO PRA ELE SER FAZIVEL?
+            bit = rd.randint(0,len(gene)-1)
+            if gene[bit] == "0": 
+                gene[bit] = "1"
+            else: 
+                gene[bit] = "0"
+            return "".join(gene)
+        return gene
+
+        
