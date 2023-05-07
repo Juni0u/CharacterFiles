@@ -16,8 +16,7 @@ def create_population (n,lvl):
     return players
 
 def battle (player,NPC):
-    """This function executes the battle itself. It returns the index
-    of the winner in the input list.
+    """This function executes the battle itself. 
     Input: Player and NPC that will be fighting
     Output: True for NPC WIN"""
     limit_round = 30
@@ -56,7 +55,7 @@ pop = create_population(100,ref.lvl)
 
 #Battles of the first population
 """In the evalution, each member of the population will fight the
-reference characters [battle_number] times"""
+reference character [battle_number] times"""
 wins = 0
 result = [] #list that saves how many wins each individual of 'pop' got.
 for enemy in pop:

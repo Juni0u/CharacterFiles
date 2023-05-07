@@ -66,14 +66,15 @@ class Character(Game_system):
                 "Nivel Defesa: "+str(self.defense)+"\n")   
 
 class toolbox():
-    """binrep = how many bits represents each atribute"""
+    """Toolbox used to integrate GA methods to the code"""
     def __init__(self,binrep):
+        """binrep = how many bits represents each atribute"""
         self.binrep = binrep
 
     def dec2bin(self,n):
         """Input: A number in decimal
         Output: The same in 5 bit binary"""
-        output = bin(n)[2:].zfill(5)
+        output = bin(n)[2:].zfill(self.binrep)
         return(output)
     
     def char2gene(self,char):
@@ -83,6 +84,7 @@ class toolbox():
         binPre=self.dec2bin(char.pre)
         binDefe=self.dec2bin(char.defe)
         binCon=self.dec2bin(char.con) 
+        print("Pdr"+binPdr+",Pre"+binPre+",Defe"+binDefe+",Con"+binCon)
         return binPdr+binPre+binDefe+binCon
     
     def gene2char(self,bin):
@@ -94,12 +96,19 @@ class toolbox():
         return output
     
     def mutation (self,gene,prob):
+        """Mutates one bit of each attribute"""
         #mut_prob = rd.randint(0,100)
         gene = list(gene)
         mut_prob = 0.05
         if mut_prob < prob*100:
             #TODO: AJUSTAR A FUNCAO DE MUTACAO
-            #COMO FAZER? DEVO "CONSERTAR" O BONECO PRA ELE SER FAZIVEL?
+            #TODO: Processo de mutacao
+            """-> Mutacao de 1 bit para cada atributo
+            -> um for loop que passar por cada atributo
+            -> seleciona um bit aleatorio
+            -> isso e feito assim por causa das regras que devem ser obedecidas
+            na criacao do personagem
+                existe limite maximo de atributos e minimo."""
             bit = rd.randint(0,len(gene)-1)
             if gene[bit] == "0": 
                 gene[bit] = "1"
