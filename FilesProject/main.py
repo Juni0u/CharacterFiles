@@ -1,6 +1,6 @@
 from Game_system import Game_system as gs
 from Game_system import Character as char
-from Game_system import toolbox
+from Game_system import GAtoolbox
 import random as rd
 import numpy as np
  
@@ -77,12 +77,12 @@ for each in result:
         print("=======")"""
 
 #TODO CONVERTER PARA BINARIO E APLICAR MUTACAO E CROSSOVER
-tb = toolbox(5)
+ga = GAtoolbox(5)
 print(ref)
 print("============")
-genes = tb.char2gene(ref)
+genes = ga.char2gene(ref)
 print("genes origin",genes)
-print("origin converted", tb.gene2char(genes))
+print("origin converted", ga.gene2char(genes))
 #NO FINAL VERIFICAR SE É UM PERSONAGEM VÁLIDO
 
 #teste = [4,2,4,-3,1]
@@ -91,7 +91,7 @@ print("origin converted", tb.gene2char(genes))
 
 #00001 00101 01100 00100
 
-mutation = tb.mutation(genes,0.1)
+mutation = ga.mutation(genes)
 print("genesmutated",mutation)
-print("mutation converted", tb.gene2char(mutation))
+print("mutation converted", ga.gene2char(mutation))
 

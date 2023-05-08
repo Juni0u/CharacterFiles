@@ -65,16 +65,20 @@ class Character(Game_system):
                 "HP: "+ str(self.hp)+"\n"+
                 "Nivel Defesa: "+str(self.defense)+"\n")   
 
-class toolbox():
+class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
-    def __init__(self,binrep):
-        """binrep = how many bits represents each atribute"""
-        self.binrep = binrep
+    def __init__(self,bin_rep=5,mut_atrib=4, mut_prob=0.05):
+        """binrep = how many bits represents each atribute
+        mut_atrib = how many atributes go through mutation each time
+        mut_prob = Mutation probability (between 0 and 1)"""
+        self.bin_rep = bin_rep
+        self.mut_atrib = mut_atrib
+        self.mut_prob = mut_prob
 
     def dec2bin(self,n):
         """Input: A number in decimal
-        Output: The same in 5 bit binary"""
-        output = bin(n)[2:].zfill(self.binrep)
+        Output: The same in [bin_rep] bit binary"""
+        output = bin(n)[2:].zfill(self.bin_rep)
         return(output)
     
     def char2gene(self,char):
@@ -91,16 +95,18 @@ class toolbox():
         """Input: Binary
         Output: List [PDR,PRE,DEFE,CON]"""
         output = []
-        for i in range(0,len(bin),5):
-            output.append(int(bin[i:i+5],2))
+        print("bin:",bin)
+        for i in range(0,len(bin),self.bin_rep):
+            print(i)
+            output.append(int(bin[i:i+self.bin_rep],2))
         return output
     
-    def mutation (self,gene,prob):
-        """Mutates one bit of each attribute"""
-        #mut_prob = rd.randint(0,100)
-        gene = list(gene)
-        mut_prob = 0.05
-        if mut_prob < prob*100:
+    def mutation (self,gene):
+        """"""
+        #prob = rd.randint(0,1)
+        prob = 0.01
+        if prob < self.mut_prob:
+            gene = list(gene)
             #TODO: AJUSTAR A FUNCAO DE MUTACAO
             #TODO: Processo de mutacao
             """-> Mutacao de 1 bit para cada atributo
