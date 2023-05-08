@@ -67,13 +67,20 @@ class Character(Game_system):
 
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
-    def __init__(self,bin_rep=5,mut_atrib=4, mut_prob=0.05):
+    def __init__(self,bin_rep=5,mut_qtd_atrib=4, mut_prob=0.05):
         """binrep = how many bits represents each atribute
         mut_atrib = how many atributes go through mutation each time
         mut_prob = Mutation probability (between 0 and 1)"""
         self.bin_rep = bin_rep
-        self.mut_atrib = mut_atrib
+        self.mut_qtd_atrib = mut_qtd_atrib
         self.mut_prob = mut_prob
+
+        if mut_qtd_atrib > 4 or mut_qtd_atrib < 1:
+            print("mut_qtd_atrib out of bounds, value set to 4.")
+            self.mut_qtd_atrib = 4
+        if mut_prob > 1 or mut_prob < 0:
+            print("mut_prob out of bounds, value set to 0.05.")
+            self.mut_prob = 0.05
 
     def dec2bin(self,n):
         """Input: A number in decimal
@@ -95,32 +102,69 @@ class GAtoolbox():
         """Input: Binary
         Output: List [PDR,PRE,DEFE,CON]"""
         output = []
-        print("bin:",bin)
+#        print("bin:",bin)
         for i in range(0,len(bin),self.bin_rep):
-            print(i)
+#            print(i)
             output.append(int(bin[i:i+self.bin_rep],2))
         return output
     
     def mutation (self,gene):
-        """"""
-        #prob = rd.randint(0,1)
-        prob = 0.01
+        """
+        -> Pick a random number to see if it is bellow the mutation probability
+        -> If it is, mutation occurs
+        -> Goes to a loop to decide which atributes will be mutated each time
+            > 1 atribute -> Change a random bit without caring its position
+            > 2 atributes -> Pick 2 random attributes and mutate 1 bit in each
+            > 3 atributes -> Pick 3 random attributes and mutate 1 bit in each
+            > 4 atributes -> Mutate 1 bit in each"""
+        prob = rd.random()
+ #      print(prob)
+ #      prob = 0.04
+        atrib_list = []
+        mutated_bits = []
+
         if prob < self.mut_prob:
             gene = list(gene)
-            #TODO: AJUSTAR A FUNCAO DE MUTACAO
-            #TODO: Processo de mutacao
-            """-> Mutacao de 1 bit para cada atributo
-            -> um for loop que passar por cada atributo
-            -> seleciona um bit aleatorio
-            -> isso e feito assim por causa das regras que devem ser obedecidas
-            na criacao do personagem
-                existe limite maximo de atributos e minimo."""
-            bit = rd.randint(0,len(gene)-1)
-            if gene[bit] == "0": 
-                gene[bit] = "1"
-            else: 
-                gene[bit] = "0"
-            return "".join(gene)
-        return gene
+            if (self.mut_qtd_atrib != 1):
+                """If mutation is to happen in only 2 or 3 atributes:
+                -> Random number between 1 and 4 are pick up
+                -> This value is multiplied by quantity of bits tat represent each atributes
+                -> This way it is possible to get to the most signiticant digit"""
+                for i in range(1,self.mut_qtd_atrib+1):
+                    atrib = rd.randint(1,4)
+                    while atrib in atrib_list:
+                        atrib = rd.randint(1,4)
+                    atrib_list.append(atrib)
 
+                for index in atrib_list:
+ #               print("numero o atributo",index)
+ #               print("posicao do bit mais significativo",index*self.bin_rep-5)
+ #               print("bit da posicao acima",gene[index*self.bin_rep-5])
+                    bit = rd.randint(index*self.bin_rep-5,index*self.bin_rep) # Get a random bit from this atribute
+                    mutated_bits.append(bit)     
+            else:
+                mutated_bits = [rd.randint(0,len(gene)-1)]
+        
+#            print("mutated bits positions:",mutated_bits)   
+            for each_bit in mutated_bits: 
+                print("error",each_bit) #TODO:
+                """Pdr00001,Pre00101,Defe01100,Con00100
+genes origin 00001001010110000100
+origin converted [1, 5, 12, 4]
+error 12
+error 20
+Traceback (most recent call last):
+  File "/home/nonato/GitRepository/CharacterFiles/FilesProject/main.py", line 95, in <module>
+    mutation = tb.mutation(genes)
+  File "/home/nonato/GitRepository/CharacterFiles/FilesProject/Game_system.py", line 151, in mutation
+    if gene[each_bit] == "0": 
+IndexError: list index out of range"""
+                if gene[each_bit] == "0": 
+                    gene[each_bit] = "1"
+                else: 
+                    gene[each_bit] = "0"
+            return "".join(gene)
+        else:
+            return (gene)
+            
         

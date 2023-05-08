@@ -77,21 +77,22 @@ for each in result:
         print("=======")"""
 
 #TODO CONVERTER PARA BINARIO E APLICAR MUTACAO E CROSSOVER
-ga = GAtoolbox(5)
+tb = GAtoolbox(5,3,0.8)
 print(ref)
 print("============")
-genes = ga.char2gene(ref)
+genes = tb.char2gene(ref)
 print("genes origin",genes)
-print("origin converted", ga.gene2char(genes))
+print("origin converted", tb.gene2char(genes))
 #NO FINAL VERIFICAR SE É UM PERSONAGEM VÁLIDO
 
 #teste = [4,2,4,-3,1]
 # 4,1,3,0,2
 #print(np.argsort(teste))
-
+#0           10
+#01234 56789 01234 56789
 #00001 00101 01100 00100
 
-mutation = ga.mutation(genes)
+mutation = tb.mutation(genes)
 print("genesmutated",mutation)
-print("mutation converted", ga.gene2char(mutation))
+print("mutation converted", tb.gene2char(mutation))
 
