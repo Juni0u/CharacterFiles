@@ -67,7 +67,7 @@ class Character(Game_system):
 
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
-    def __init__(self,bin_rep=5,mut_qtd_atrib=4, mut_prob=0.05):
+    def __init__(self,bin_rep=4,mut_qtd_atrib=4, mut_prob=0.05):
         """binrep = how many bits represents each atribute
         mut_atrib = how many atributes go through mutation each time
         mut_prob = Mutation probability (between 0 and 1)"""
@@ -108,6 +108,12 @@ class GAtoolbox():
             output.append(int(bin[i:i+self.bin_rep],2))
         return output
     
+    def crossover (self,gene1,gene2):
+        """[atrib1][atrib2][atrib3][atrib4]
+        each time one of the three beginning positions will be chosen (beginning of atrib1, 2 or 3)
+        and also a final position too, after the beginning one.
+        One part will be from gene1 and the other from gene2"""
+
     def mutation (self,gene):
         """
         -> Pick a random number to see if it is bellow the mutation probability
@@ -119,7 +125,7 @@ class GAtoolbox():
             > 4 atributes -> Mutate 1 bit in each"""
         prob = rd.random()
  #      print(prob)
- #      prob = 0.04
+        prob = 0.04
         atrib_list = []
         mutated_bits = []
 
@@ -140,25 +146,17 @@ class GAtoolbox():
  #               print("numero o atributo",index)
  #               print("posicao do bit mais significativo",index*self.bin_rep-5)
  #               print("bit da posicao acima",gene[index*self.bin_rep-5])
-                    bit = rd.randint(index*self.bin_rep-5,index*self.bin_rep) # Get a random bit from this atribute
+                    print("from",index*self.bin_rep-5)
+                    print("to",index*self.bin_rep)
+                    bit = rd.randint(index*self.bin_rep-5,index*self.bin_rep-1) # Get a random bit from this atribute
+                    print("chosen:",bit)
+                    print()
                     mutated_bits.append(bit)     
             else:
                 mutated_bits = [rd.randint(0,len(gene)-1)]
         
 #            print("mutated bits positions:",mutated_bits)   
             for each_bit in mutated_bits: 
-                print("error",each_bit) #TODO:
-                """Pdr00001,Pre00101,Defe01100,Con00100
-genes origin 00001001010110000100
-origin converted [1, 5, 12, 4]
-error 12
-error 20
-Traceback (most recent call last):
-  File "/home/nonato/GitRepository/CharacterFiles/FilesProject/main.py", line 95, in <module>
-    mutation = tb.mutation(genes)
-  File "/home/nonato/GitRepository/CharacterFiles/FilesProject/Game_system.py", line 151, in mutation
-    if gene[each_bit] == "0": 
-IndexError: list index out of range"""
                 if gene[each_bit] == "0": 
                     gene[each_bit] = "1"
                 else: 
