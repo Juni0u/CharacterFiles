@@ -28,13 +28,13 @@ def battle (player,NPC):
         if player.attack(NPC):
             NPC.update_hp(-player.pdr)
             if NPC.hp < 1:
-                return False
+                return False, rounds
         if NPC.attack(player):     
             player.update_hp(-NPC.pdr)
             if player.hp < 1:
-                return True
+                return True, rounds
         rounds += 1
-    return True
+    return True, rounds
 
 
  #Funcao a ser optimizada: Numero de vitorias em X batalhas.
@@ -47,7 +47,7 @@ ref = char(15, 1, 5, 12 , 4)
 ref2 = char(15, 3, 7, 6, 6)
 
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
-battle_number = 10
+battle_number = 100
 #Actual desired number of wins to be considered in the algorithm.
 true_goal = int(battle_number * goal/100)  
 
@@ -77,32 +77,33 @@ for each in result:
         print(pop[i])
         print("=======")"""
 
-#TODO CONVERTER PARA BINARIO E APLICAR MUTACAO E CROSSOVER
-tb = GAtoolbox(bin_rep=4,mut_qtd_atrib=4,mut_prob=0.95)
-print(ref)
-print(ref2)
-print("============")
-genes = tb.char2gene(ref)
-genes2 = tb.char2gene(ref2)
-print("genes origin",genes)
-print("origin converted", tb.gene2char(genes))
-print("genes2 origin",genes2)
-print("origin2 converted", tb.gene2char(genes2))
-print()
+# #TODO CONVERTER PARA BINARIO E APLICAR MUTACAO E CROSSOVER
+# tb = GAtoolbox(bin_rep=4,mut_prob=0.05)
+# print(ref)
+# print(ref2)
+# print("============")
+# genes = tb.char2gene(ref)
+# genes2 = tb.char2gene(ref2)
+# print("genes origin",genes)
+# print("origin converted", tb.gene2char(genes))
+# print("genes2 origin",genes2)
+# print("origin2 converted", tb.gene2char(genes2))
+# print()
 
-#NO FINAL VERIFICAR SE É UM PERSONAGEM VÁLIDO
+# #NO FINAL VERIFICAR SE É UM PERSONAGEM VÁLIDO
 
-#teste = [4,2,4,-3,1]
-# 4,1,3,0,2
-#print(np.argsort(teste))
-#               10
-# 0123  4567  8901  2345
-#[0000][0000][0000][0000]
-print("============")
-mutation = tb.mutation(genes)
-print("genesmutated",mutation)
-print("mutation converted", tb.gene2char(mutation))
-print()
-print("============")
-crosso = tb.crossover(genes,genes2)
+# #teste = [4,2,4,-3,1]
+# # 4,1,3,0,2
+# #print(np.argsort(teste))
+# #               10
+# # 0123  4567  8901  2345
+# #[0000][0000][0000][0000]
+# print("============")
+# mutation = tb.mutation(genes)
+# print("genes origin ",genes)
+# print("genes1mutated",mutation)
+# print("mutation converted", tb.gene2char(mutation))
+# print()
+# print("============")
+# crosso = tb.crossover(genes,genes2)
 

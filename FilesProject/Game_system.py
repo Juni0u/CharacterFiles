@@ -67,17 +67,13 @@ class Character(Game_system):
 
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
-    def __init__(self,bin_rep=4,mut_qtd_atrib=4, mut_prob=0.05):
+    def __init__(self,bin_rep=4, mut_prob=0.05):
         """binrep = how many bits represents each atribute
         mut_atrib = how many atributes go through mutation each time
         mut_prob = Mutation probability (between 0 and 1)"""
         self.bin_rep = bin_rep
-        self.mut_qtd_atrib = mut_qtd_atrib
         self.mut_prob = mut_prob
 
-        if mut_qtd_atrib > 4 or mut_qtd_atrib < 1:
-            print("mut_qtd_atrib out of bounds, value set to 4.")
-            self.mut_qtd_atrib = 4
         if mut_prob > 1 or mut_prob < 0:
             print("mut_prob out of bounds, value set to 0.05.")
             self.mut_prob = 0.05
@@ -95,7 +91,7 @@ class GAtoolbox():
         binPre=self.dec2bin(char.pre)
         binDefe=self.dec2bin(char.defe)
         binCon=self.dec2bin(char.con) 
-        print("Pdr"+binPdr+",Pre"+binPre+",Defe"+binDefe+",Con"+binCon)
+#        print("Pdr"+binPdr+",Pre"+binPre+",Defe"+binDefe+",Con"+binCon)
         return binPdr+binPre+binDefe+binCon
     
     def gene2char(self,bin):
@@ -118,70 +114,40 @@ class GAtoolbox():
         #[0000][0000][0000][0000]
         gene1 = list(gene1)
         gene2 = list(gene2)
-        gene_out = [None]*self.bin_rep*4
+        gene_out1 = [None]*self.bin_rep*4
+        gene_out2 = [None]*self.bin_rep*4
         start = [i*self.bin_rep for i in range(self.bin_rep)]              #possible positions to beginning positions of cut
         end = [i*self.bin_rep+self.bin_rep-1 for i in range(self.bin_rep)] #possible positions to ending positions of cut
         cut_in = rd.choice(start)
         cut_out = rd.choice(end)
         while (cut_out < cut_in):
             cut_out = rd.choice(end)
-        print("cutIN: ",cut_in,"// cutOUT: ",cut_out)  
+#        print("cutIN: ",cut_in,"// cutOUT: ",cut_out)  
+
         for i in range (cut_in,cut_out+1):
-            gene_out[i] = gene1[i]
-        for i in range(0,len(gene_out)):
-            if gene_out[i] is None:
-                gene_out[i]=gene2[i]
-        return "".join(gene_out)     
+            gene_out1[i] = gene1[i]
+            gene_out2[i] = gene2[i]
+            
+        for i in range(0,len(gene_out1)):
+            if gene_out1[i] is None:
+                gene_out1[i]=gene2[i]
+            if gene_out2[i] is None:
+                gene_out2[i]=gene1[i]
+
+        gene_out1 = "".join(gene_out1)
+        gene_out2 = "".join(gene_out2)     
+        return gene_out1, gene_out2
 
     def mutation (self,gene):
-        """
-        -> Pick a random number to see if it is bellow the mutation probability
-        -> If it is, mutation occurs
-        -> Goes to a loop to decide which atributes will be mutated each time
-            > 1 atribute -> Change a random bit without caring its position
-            > 2 atributes -> Pick 2 random attributes and mutate 1 bit in each
-            > 3 atributes -> Pick 3 random attributes and mutate 1 bit in each
-            > 4 atributes -> Mutate 1 bit in each"""
-        prob = rd.random()
- #      print(prob)
-        prob = 0.04
-        atrib_list = []
-        mutated_bits = []
+        gene = list(gene)
+        for i in range(0,len(gene)):
+            prob = rd.random()
+            if prob < self.mut_prob:
+                if gene[i] == "0":
+                    gene[i] = "1"
+                else:
+                    gene[i] = "0"
+        return "".join(gene)    
+    
 
-        if prob < self.mut_prob:
-            gene = list(gene)
-            if (self.mut_qtd_atrib != 1):
-                """If mutation is to happen in only 2 or 3 atributes:
-                -> Random number between 1 and 4 are pick up
-                -> This value is multiplied by quantity of bits tat represent each atributes
-                -> This way it is possible to get to the most signiticant digit"""
-                for i in range(1,self.mut_qtd_atrib+1):
-                    atrib = rd.randint(1,4)
-                    while atrib in atrib_list:
-                        atrib = rd.randint(1,4)
-                    atrib_list.append(atrib)
-
-                for index in atrib_list:
- #               print("numero o atributo",index)
- #               print("posicao do bit mais significativo",index*self.bin_rep-5)
- #               print("bit da posicao acima",gene[index*self.bin_rep-5])
- #                  print("from",index*self.bin_rep-self.bin_rep)
- #                  print("to",index*self.bin_rep-1)
-                    bit = rd.randint(index*self.bin_rep-self.bin_rep,index*self.bin_rep-1) # Get a random bit from this atribute
- #                  print("chosen:",bit)
- #                  print()
-                    mutated_bits.append(bit)     
-            else:
-                mutated_bits = [rd.randint(0,len(gene)-1)]
-        
-#            print("mutated bits positions:",mutated_bits)   
-            for each_bit in mutated_bits: 
-                if gene[each_bit] == "0": 
-                    gene[each_bit] = "1"
-                else: 
-                    gene[each_bit] = "0"
-            return "".join(gene)
-        else:
-            return (gene)
-            
         
