@@ -44,6 +44,7 @@ def battle (player,NPC):
 goal = 60             
 # Player Character who is going to be the reference
 ref = char(15, 1, 5, 12 , 4)
+ref2 = char(15, 3, 7, 6, 6)
 
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
 battle_number = 10
@@ -77,22 +78,31 @@ for each in result:
         print("=======")"""
 
 #TODO CONVERTER PARA BINARIO E APLICAR MUTACAO E CROSSOVER
-tb = GAtoolbox(5,3,0.8)
+tb = GAtoolbox(bin_rep=4,mut_qtd_atrib=4,mut_prob=0.95)
 print(ref)
+print(ref2)
 print("============")
 genes = tb.char2gene(ref)
+genes2 = tb.char2gene(ref2)
 print("genes origin",genes)
 print("origin converted", tb.gene2char(genes))
+print("genes2 origin",genes2)
+print("origin2 converted", tb.gene2char(genes2))
+print()
+
 #NO FINAL VERIFICAR SE É UM PERSONAGEM VÁLIDO
 
 #teste = [4,2,4,-3,1]
 # 4,1,3,0,2
 #print(np.argsort(teste))
-#0           10
-#01234 56789 01234 56789
-#00001 00101 01100 00100
-
+#               10
+# 0123  4567  8901  2345
+#[0000][0000][0000][0000]
+print("============")
 mutation = tb.mutation(genes)
 print("genesmutated",mutation)
 print("mutation converted", tb.gene2char(mutation))
+print()
+print("============")
+crosso = tb.crossover(genes,genes2)
 

@@ -113,6 +113,25 @@ class GAtoolbox():
         each time one of the three beginning positions will be chosen (beginning of atrib1, 2 or 3)
         and also a final position too, after the beginning one.
         One part will be from gene1 and the other from gene2"""
+        #               10
+        # 0123  4567  8901  2345
+        #[0000][0000][0000][0000]
+        gene1 = list(gene1)
+        gene2 = list(gene2)
+        gene_out = [None]*self.bin_rep*4
+        start = [i*self.bin_rep for i in range(self.bin_rep)]              #possible positions to beginning positions of cut
+        end = [i*self.bin_rep+self.bin_rep-1 for i in range(self.bin_rep)] #possible positions to ending positions of cut
+        cut_in = rd.choice(start)
+        cut_out = rd.choice(end)
+        while (cut_out < cut_in):
+            cut_out = rd.choice(end)
+        print("cutIN: ",cut_in,"// cutOUT: ",cut_out)  
+        for i in range (cut_in,cut_out+1):
+            gene_out[i] = gene1[i]
+        for i in range(0,len(gene_out)):
+            if gene_out[i] is None:
+                gene_out[i]=gene2[i]
+        return "".join(gene_out)     
 
     def mutation (self,gene):
         """
@@ -146,11 +165,11 @@ class GAtoolbox():
  #               print("numero o atributo",index)
  #               print("posicao do bit mais significativo",index*self.bin_rep-5)
  #               print("bit da posicao acima",gene[index*self.bin_rep-5])
-                    print("from",index*self.bin_rep-5)
-                    print("to",index*self.bin_rep)
-                    bit = rd.randint(index*self.bin_rep-5,index*self.bin_rep-1) # Get a random bit from this atribute
-                    print("chosen:",bit)
-                    print()
+ #                  print("from",index*self.bin_rep-self.bin_rep)
+ #                  print("to",index*self.bin_rep-1)
+                    bit = rd.randint(index*self.bin_rep-self.bin_rep,index*self.bin_rep-1) # Get a random bit from this atribute
+ #                  print("chosen:",bit)
+ #                  print()
                     mutated_bits.append(bit)     
             else:
                 mutated_bits = [rd.randint(0,len(gene)-1)]
