@@ -107,3 +107,6 @@ for each in result:
 # print("============")
 # crosso = tb.crossover(genes,genes2)
 
+ref3 = char(1, 2, 2, 2, 3)
+
+print(ref3)

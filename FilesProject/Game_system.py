@@ -40,12 +40,12 @@ class Character(Game_system):
         - Bonus Point depeding on the Race. Here this bonus is considered by the
         distribution of lvl+1 points. The extra point is the bonus point."""
 
-        if (pdr) < 1 or (pre) < 1 or (defe) < 1:
-            raise AttrOutOfRangeError("POWER, PRECISION or DEFENSE is smaller than 1")
-        elif (con) < 3:
-            raise AttrOutOfRangeError("CONSTITUION is smaller than 3")
-        elif (pdr+pre+defe+con) > lvl+7:
-            raise AttrOutOfRangeError("Max atributes must be lvl+7")
+        # if (pdr) < 1 or (pre) < 1 or (defe) < 1:
+        #     raise AttrOutOfRangeError("POWER, PRECISION or DEFENSE is smaller than 1")
+        # elif (con) < 3:
+        #     raise AttrOutOfRangeError("CONSTITUION is smaller than 3")
+        # elif (pdr+pre+defe+con) > lvl+7:
+        #     raise AttrOutOfRangeError("Max atributes must be lvl+7")
 
         self.lvl = lvl
         self.pdr = pdr
@@ -55,6 +55,7 @@ class Character(Game_system):
         self.lvlbonus = int(self.lvl*3/4)
         self.defense = self.defe + self.lvlbonus + 10
         self.hp = con
+        self.fix_distribution()
 
     def __str__(self):
         return ("Level: "+ str(self.lvl)+"\n"+
@@ -64,6 +65,26 @@ class Character(Game_system):
                 "CONSTITUICAO: "+ str(self.con)+"\n \n"+
                 "HP: "+ str(self.hp)+"\n"+
                 "Nivel Defesa: "+str(self.defense)+"\n")   
+    
+    def fix_distribution(self):
+        atrib_list = [self.pdr,self.pre,self.defe,self.con]
+        while sum(atrib_list) > self.lvl + 7:
+            #TODO aqui: tenho que pegar um atributo que NAO e igual a um pra diminuir. Pode ser o segundo maior...!
+            if (atrib_list.index(max(atrib_list)) == 3) and (atrib_list[atrib_list.index(max(atrib_list))] == 3):
+                while atrib_list[rd.randint(0,2)] == 1:
+                    atrib_list[rd.randint(0,2)] -= 1
+            else:    
+                atrib_list[atrib_list.index(max(atrib_list))] -= 1
+        while sum(atrib_list) < self.lvl +7:
+            atrib_list[atrib_list.index(min(atrib_list))] += 1
+        
+        self.pdr = atrib_list[0]
+        self.pre = atrib_list[1]
+        self.defe = atrib_list[2]
+        self.con = atrib_list[3]
+        
+
+
 
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
