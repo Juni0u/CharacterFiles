@@ -105,17 +105,17 @@ class Character(Game_system):
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
     
-    def __init__(self,bin_rep=4, mut_prob=0.05):
+    def __init__(self,bin_rep=5, mut_prob=0.03):
         """binrep = how many bits represents each atribute
         mut_atrib = how many atributes go through mutation each time
         mut_prob = Mutation probability (between 0 and 1)"""
-        self.parameters = parameter(PARAM_FILE) #TODO: Adjust a parameter file
+#        self.parameters = parameter(PARAM_FILE) #TODO: Adjust a parameter file
         self.bin_rep = bin_rep
         self.mut_prob = mut_prob
 
         if mut_prob > 1 or mut_prob < 0:
-            print("mut_prob out of bounds, value set to 0.05.")
-            self.mut_prob = 0.05
+            print("mut_prob out of bounds, value set to 0.03.")
+            self.mut_prob = 0.03
 
     def dec2bin(self,n):
         """Input: A number in decimal
@@ -139,7 +139,7 @@ class GAtoolbox():
         output = []
 #        print("bin:",bin)
         for i in range(0,len(bin),self.bin_rep):
-#            print(i)
+            #print(i)
             output.append(int(bin[i:i+self.bin_rep],2))
         return output
     
@@ -149,19 +149,21 @@ class GAtoolbox():
         and also a final position too, after the beginning one.
         One part will be from gene1 and the other from gene2"""
         #               10
-        # 0123  4567  8901  2345
-        #[0000][0000][0000][0000]
+        # 01234  56789  01234  56789
+        #[00000][00000][00000][00000]
         gene1 = list(gene1)
         gene2 = list(gene2)
         gene_out1 = [None]*self.bin_rep*4
         gene_out2 = [None]*self.bin_rep*4
-        start = [i*self.bin_rep for i in range(self.bin_rep)]              #possible positions to beginning positions of cut
-        end = [i*self.bin_rep+self.bin_rep-1 for i in range(self.bin_rep)] #possible positions to ending positions of cut
+        start = [i*self.bin_rep for i in range(4)]              #possible positions to beginning positions of cut
+        #print(start)
+        end = [i*self.bin_rep+self.bin_rep-1 for i in range(4)] #possible positions to ending positions of cut
+        #print(end)
         cut_in = rd.choice(start)
         cut_out = rd.choice(end)
         while (cut_out < cut_in):
             cut_out = rd.choice(end)
-#        print("cutIN: ",cut_in,"// cutOUT: ",cut_out)  
+        #print("cutIN: ",cut_in,"// cutOUT: ",cut_out)  
 
         for i in range (cut_in,cut_out+1):
             gene_out1[i] = gene1[i]
@@ -178,14 +180,17 @@ class GAtoolbox():
         return gene_out1, gene_out2
 
     def mutation (self,gene):
+        #print("in: ", gene)
         gene = list(gene)
-        for i in range(0,len(gene)):
+        for i in range(0,len(gene)-1):
             prob = rd.random()
             if prob < self.mut_prob:
                 if gene[i] == "0":
                     gene[i] = "1"
                 else:
                     gene[i] = "0"
+        #print("out ", "".join(gene))
+        #print()
         return "".join(gene)    
     
 

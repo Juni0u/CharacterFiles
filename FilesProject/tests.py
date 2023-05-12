@@ -4,13 +4,15 @@ from Game_system import GAtoolbox
 import random as rd
 import numpy as np
 
-lvl = 15
-pdr = 2
-pre = 2
-defe = 2
-con = 3
+import random
 
-ref3 = char(lvl, pdr, pre, defe, con)
- 
-print(ref3)
- 
+new_list = []
+result = [11, 22, 33, 44, 55, 66, 77, 88, 99, 100]
+sorted_indices = sorted(range(len(result)), key=lambda i: result[i], reverse=True) 
+
+for i in range(5):
+    print("si ", sorted_indices)
+    parent1 = sorted_indices[rd.randint(0,len(sorted_indices)-1)]
+    new_list.append(parent1)
+    sorted_indices.remove(parent1)
+    print(parent1)
