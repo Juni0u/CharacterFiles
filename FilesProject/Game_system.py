@@ -1,10 +1,18 @@
 import random as rd
+import json
+PARAM_FILE = "PARAMETERS.json"
 
 class AttrOutOfRangeError(Exception):
     pass
 
-class Game_system():
+class parameter(object):
+    def __init__(self, archive_name):
+        with open(archive_name,'r') as arq:
+            parameter = json.load(arq)
 
+        self.COLOR_LIST = parameter["COLOR_LIST"]
+
+class Game_system():
     def roll_dices(self):
     #TODO: Is there a critical role?    
         """This function rolls 3 1d6 and returns the sum of them."""
@@ -35,10 +43,12 @@ class Game_system():
 class Character(Game_system):        
     def __init__(self,lvl, pdr,pre,defe,con):
         """Rules for character creation:
-        - Starting points: 1 (PDR), 1(PRE), 1(DEFE), 3(CON)
-        - Each lvl grants 1 point. In lvl 1 -> 1 Point to distribute;
+        - Starting points: 1 (PDR), 1(PRE), 1(DEFE), 3(CON) [6points]
+        - Each lvl grants 1 point. In lvl 1 -> 1 Point to distribute; [lvl points]
         - Bonus Point depeding on the Race. Here this bonus is considered by the
-        distribution of lvl+1 points. The extra point is the bonus point."""
+        distribution of lvl+1 points. The extra point is the bonus point. [1points]
+        - So the max sum each character can have is lvl + 6 + 1 = lvl + 7"""
+        
 
         # if (pdr) < 1 or (pre) < 1 or (defe) < 1:
         #     raise AttrOutOfRangeError("POWER, PRECISION or DEFENSE is smaller than 1")
@@ -55,7 +65,14 @@ class Character(Game_system):
         self.lvlbonus = int(self.lvl*3/4)
         self.defense = self.defe + self.lvlbonus + 10
         self.hp = con
+        self.max_sum = self.lvl + 7
+#        print("antes: ", self.pdr+self.pre+self.defe+self.con)
+#        print("tem que ter: ", self.max_sum)
+#        print()
         self.fix_distribution()
+#        print("depois: ", self.pdr+self.pre+self.defe+self.con)
+#        print()
+
 
     def __str__(self):
         return ("Level: "+ str(self.lvl)+"\n"+
@@ -68,30 +85,31 @@ class Character(Game_system):
     
     def fix_distribution(self):
         atrib_list = [self.pdr,self.pre,self.defe,self.con]
-        while sum(atrib_list) > self.lvl + 7:
-            #TODO aqui: tenho que pegar um atributo que NAO e igual a um pra diminuir. Pode ser o segundo maior...!
-            if (atrib_list.index(max(atrib_list)) == 3) and (atrib_list[atrib_list.index(max(atrib_list))] == 3):
-                while atrib_list[rd.randint(0,2)] == 1:
-                    atrib_list[rd.randint(0,2)] -= 1
+        while sum(atrib_list) > self.max_sum:
+            if (atrib_list.index(max(atrib_list)) == 3) and (atrib_list[atrib_list.index(max(atrib_list))] == 3): #If biggest atrib is CON [index3] and its value is 3 (3 is its MINIMAL value)
+                while True:
+                    att = rd.randint(0,2) 
+                    if atrib_list[att] != 1:
+                        atrib_list[att] -= 1
+                        break
             else:    
                 atrib_list[atrib_list.index(max(atrib_list))] -= 1
-        while sum(atrib_list) < self.lvl +7:
+        while sum(atrib_list) < self.max_sum:
             atrib_list[atrib_list.index(min(atrib_list))] += 1
         
         self.pdr = atrib_list[0]
         self.pre = atrib_list[1]
         self.defe = atrib_list[2]
         self.con = atrib_list[3]
-        
-
-
 
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
+    
     def __init__(self,bin_rep=4, mut_prob=0.05):
         """binrep = how many bits represents each atribute
         mut_atrib = how many atributes go through mutation each time
         mut_prob = Mutation probability (between 0 and 1)"""
+        self.parameters = parameter(PARAM_FILE) #TODO: Adjust a parameter file
         self.bin_rep = bin_rep
         self.mut_prob = mut_prob
 
