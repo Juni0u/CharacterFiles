@@ -57,13 +57,13 @@ def tourney (battle_number, pop, ref):
  #Funcao a ser optimizada: Numero de vitorias em X batalhas.
 ######################### INPUTS ##########################
 # [%] of win desired
-goal = 60    
+goal = 50    
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
-battle_number = 1000
+battle_number = 10
 #Popolation size
-pop_size = 500
+pop_size = 10
 #Generations
-gen = 300
+gen = 2
 # [%] of elitism considered
 elitism = 10
 ###########################################################
@@ -71,8 +71,10 @@ elitism = 10
 ref = char(15, 3 ,5 ,9 ,6)
 # Actual desired number of wins to be considered in the algorithm.
 true_goal = int(battle_number * goal/100)  
+print("true goal is:", true_goal)
 # Number of individuals that'll be kept through a generation due to elitism
 elite_num = int(elitism * pop_size/100)  
+print("individuals in elite is:", elite_num)
 # Initial Population 
 pop = create_population(pop_size,ref.lvl)
 # Initialization 
@@ -85,16 +87,29 @@ GA = GAtoolbox()
 
 #AlgoFLOW #TODO: O algoritmo ta configurado pro melhor boneco ser o que venceu mais. nao e isso que eu quero! a fitness function e a distancia do meu alvo de vitorias!
 for i in range(gen):
-#    print("======================")
-#    print("Gen ",i)
+    print("======================")
+    print("Gen ",i)
     result = tourney(battle_number, pop, ref)
-    sorted_indices = sorted(range(len(result)), key=lambda i: result[i], reverse=True) #This gives a list with the sorted indexes of a result list -> first_result[sorted_indices[0] is the individual with the most wins]
+    print("result antes:" , result)
+    for i in range(len(result)):
+        result[i] = abs(result[i] - true_goal)
+    print("result com true goal:", result)
+    sorted_indices = sorted(range(len(result)), key=lambda i: result[i], reverse=False) #This gives a list with the sorted indexes of a result list -> first_result[sorted_indices[0] is the individual with the most wins]
+    print("indeces de result ordenado ", sorted_indices)
+    
     #Separate Elite
     for j in range(elite_num):
+        print("---elite---")
+        print(pop[sorted_indices[j]])
         new_pop.append(pop[sorted_indices[j]])
+
+    print("how many individuals in elite: ", len(new_pop))
     #Do crossover
     """Individuals randomly selected from the group that was not part of the elite"""
     for k in range(0,pop_size-elite_num,2):
+        print("---crossover---")
+        print("de 0 ate ",pop_size-elite_num)
+        print("k value:", k)
         if (elite_num == (len(sorted_indices)-1)):
             break
 
@@ -121,6 +136,7 @@ for i in range(gen):
         while len(new_pop) < pop_size:
             new_pop.append(pop[rd.randint(0,pop_size-1)])
 
+
     #Do Mutation for those that are not elites
     for k in range(elite_num,pop_size-1):
         indiv = new_pop[k]
@@ -139,12 +155,14 @@ for i in range(gen):
     pop = new_pop
     new_pop = []
 
-for i in range(10):
+
+print("============RESULTS============")
+"""for i in range(10):
     print(pop[i])
     print(result[i])     
     print()
     print()
-    print()     
+    print()   """  
 
 
 
