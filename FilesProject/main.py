@@ -20,7 +20,7 @@ def battle (player, NPC):
     """This function executes the battle itself. 
     Input: Player and NPC that will be fighting
     Output: True for NPC WIN"""
-    limit_round = 10
+    limit_round = 25
     rounds = 0
     player.reset_hp()
     NPC.reset_hp()
@@ -57,24 +57,24 @@ def tourney (battle_number, pop, ref):
  #Funcao a ser optimizada: Numero de vitorias em X batalhas.
 ######################### INPUTS ##########################
 # [%] of win desired
-goal = 50    
+goal = 75    
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
-battle_number = 10
+battle_number = 1000
 #Popolation size
-pop_size = 10
+pop_size = 50
 #Generations
-gen = 2
+gen = 300
 # [%] of elitism considered
 elitism = 10
 ###########################################################
 # Player Character who is going to be the reference
-ref = char(15, 3 ,5 ,9 ,6)
+ref = char(15, 3 ,5 ,8 ,6)
 # Actual desired number of wins to be considered in the algorithm.
 true_goal = int(battle_number * goal/100)  
-print("true goal is:", true_goal)
+#print("true goal is:", true_goal)
 # Number of individuals that'll be kept through a generation due to elitism
 elite_num = int(elitism * pop_size/100)  
-print("individuals in elite is:", elite_num)
+#print("individuals in elite is:", elite_num)
 # Initial Population 
 pop = create_population(pop_size,ref.lvl)
 # Initialization 
@@ -86,30 +86,37 @@ GA = GAtoolbox()
 #TODO: A list to save how many rounds each battle took? Or maybe just the average?
 
 #AlgoFLOW #TODO: O algoritmo ta configurado pro melhor boneco ser o que venceu mais. nao e isso que eu quero! a fitness function e a distancia do meu alvo de vitorias!
-for i in range(gen):
-    print("======================")
-    print("Gen ",i)
+for g in range(gen):
+    #print("======================")
+    #print("Gen ",i)
     result = tourney(battle_number, pop, ref)
-    print("result antes:" , result)
+    #print("result antes:" , result)
     for i in range(len(result)):
         result[i] = abs(result[i] - true_goal)
-    print("result com true goal:", result)
+    #print("result com true goal:", result)
     sorted_indices = sorted(range(len(result)), key=lambda i: result[i], reverse=False) #This gives a list with the sorted indexes of a result list -> first_result[sorted_indices[0] is the individual with the most wins]
-    print("indeces de result ordenado ", sorted_indices)
+    #print("indeces de result ordenado ", sorted_indices)
     
     #Separate Elite
     for j in range(elite_num):
-        print("---elite---")
-        print(pop[sorted_indices[j]])
+        #print("---elite---")
+        #print(pop[sorted_indices[j]])
         new_pop.append(pop[sorted_indices[j]])
 
-    print("how many individuals in elite: ", len(new_pop))
+    #print("how many individuals in elite: ", len(new_pop))
     #Do crossover
     """Individuals randomly selected from the group that was not part of the elite"""
-    for k in range(0,pop_size-elite_num,2):
-        print("---crossover---")
-        print("de 0 ate ",pop_size-elite_num)
-        print("k value:", k)
+    #for k in range(0,pop_size-elite_num,1):
+    while (len(new_pop) < pop_size):
+        """um while loop que vai continuar enquanto o tamanho de new_pop for menor que o requisitado
+        porem, se a qtd de individuos que falta for 1, sorteia um individuo e fecha o loop"""
+        #print("---crossover---")
+        #print("tamanho da pop: ", len(new_pop))
+        if pop_size-len(new_pop)==1:
+            new_pop.append(pop[rd.randint(0,pop_size-1)])
+            #print("tamanho da pop: ", len(new_pop))
+            break
+
         if (elite_num == (len(sorted_indices)-1)):
             break
 
@@ -131,11 +138,7 @@ for i in range(gen):
         for child in children:
             child = GA.gene2char(child)
             child = char(ref.lvl, child[0], child[1], child[2], child[3])
-            new_pop.append(child)
-        
-        while len(new_pop) < pop_size:
-            new_pop.append(pop[rd.randint(0,pop_size-1)])
-
+            new_pop.append(child)         
 
     #Do Mutation for those that are not elites
     for k in range(elite_num,pop_size-1):
@@ -154,15 +157,19 @@ for i in range(gen):
     #Set new_pop as pop and reset new_pop
     pop = new_pop
     new_pop = []
-
-
-print("============RESULTS============")
-"""for i in range(10):
-    print(pop[i])
-    print(result[i])     
+    
+    #if (g-1) in gen2print: 
+    print("============RESULTS============")
+    print("GENERATION: ", g+1)
     print()
-    print()
-    print()   """  
+    for i in range(2):
+        print(pop[sorted_indices[i]])
+        print(result[sorted_indices[i]])    
+        print()  
+
+with open("characters.txt", "w") as f:
+    for character in pop:
+        f.write(str(character) + "\n")
 
 
 

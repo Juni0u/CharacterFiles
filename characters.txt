@@ -1,0 +1,450 @@
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 4
+ 
+HP: -2
+Nivel Defesa: 28
+
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 4
+ 
+HP: -2
+Nivel Defesa: 28
+
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 4
+ 
+HP: -2
+Nivel Defesa: 28
+
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 4
+ 
+HP: -2
+Nivel Defesa: 28
+
+Level: 15
+PODER: 5
+PRECISAO: 3
+DEFESA: 9
+CONSTITUICAO: 5
+ 
+HP: 2
+Nivel Defesa: 30
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 7
+PRECISAO: 5
+DEFESA: 2
+CONSTITUICAO: 8
+ 
+HP: 21
+Nivel Defesa: 23
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 14
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 28
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 25
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 13
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 1
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 42
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 28
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 2
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 34
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 14
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 22
+Nivel Defesa: 27
+
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 0
+Nivel Defesa: 27
+
