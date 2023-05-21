@@ -1,75 +1,508 @@
+Distance from goal: 12
 Level: 15
 PODER: 6
-PRECISAO: 6
+PRECISAO: 5
 DEFESA: 6
-CONSTITUICAO: 4
+CONSTITUICAO: 5
  
-HP: -2
-Nivel Defesa: 28
+HP: 5
+Nivel Defesa: 29
 
+----------------------------- 
+
+Distance from goal: 19
 Level: 15
 PODER: 6
-PRECISAO: 6
-DEFESA: 6
-CONSTITUICAO: 4
+PRECISAO: 5
+DEFESA: 10
+CONSTITUICAO: 1
  
 HP: -2
-Nivel Defesa: 28
+Nivel Defesa: 31
 
+----------------------------- 
+
+Distance from goal: 25
 Level: 15
 PODER: 6
-PRECISAO: 6
-DEFESA: 6
-CONSTITUICAO: 4
+PRECISAO: 5
+DEFESA: 10
+CONSTITUICAO: 1
  
-HP: -2
-Nivel Defesa: 28
+HP: 1
+Nivel Defesa: 31
 
-Level: 15
-PODER: 6
-PRECISAO: 6
-DEFESA: 6
-CONSTITUICAO: 4
- 
-HP: -2
-Nivel Defesa: 28
+----------------------------- 
 
+Distance from goal: 39
 Level: 15
 PODER: 5
-PRECISAO: 3
-DEFESA: 9
+PRECISAO: 5
+DEFESA: 11
+CONSTITUICAO: 1
+ 
+HP: -2
+Nivel Defesa: 32
+
+----------------------------- 
+
+Distance from goal: 69
+Level: 15
+PODER: 6
+PRECISAO: 8
+DEFESA: 1
+CONSTITUICAO: 7
+ 
+HP: -2
+Nivel Defesa: 22
+
+----------------------------- 
+
+Distance from goal: 270
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 295
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 34
+
+----------------------------- 
+
+Distance from goal: 342
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 7
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 356
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 377
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 394
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 404
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 411
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 7
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 412
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 418
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 420
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 425
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 444
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 445
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 473
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 33
+
+----------------------------- 
+
+Distance from goal: 474
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 476
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 43
+
+----------------------------- 
+
+Distance from goal: 485
+Level: 15
+PODER: 5
+PRECISAO: 9
+DEFESA: 4
+CONSTITUICAO: 4
+ 
+HP: 4
+Nivel Defesa: 25
+
+----------------------------- 
+
+Distance from goal: 486
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 505
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 507
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 508
+Level: 15
+PODER: 4
+PRECISAO: 7
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 512
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 513
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 515
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 520
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 43
+
+----------------------------- 
+
+Distance from goal: 535
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 549
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 557
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 577
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 1
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 578
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 587
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 594
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 615
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 629
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
 CONSTITUICAO: 5
  
 HP: 2
-Nivel Defesa: 30
+Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 653
 Level: 15
 PODER: 5
-PRECISAO: 5
-DEFESA: 6
+PRECISAO: 6
+DEFESA: 5
 CONSTITUICAO: 6
  
-HP: 6
-Nivel Defesa: 27
+HP: 7
+Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 733
 Level: 15
 PODER: 5
-PRECISAO: 5
+PRECISAO: 6
 DEFESA: 6
-CONSTITUICAO: 6
+CONSTITUICAO: 5
  
-HP: 6
+HP: 5
 Nivel Defesa: 27
 
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
+----------------------------- 
 
+Distance from goal: 736
 Level: 15
 PODER: 6
 PRECISAO: 5
@@ -79,15 +512,9 @@ CONSTITUICAO: 5
 HP: 5
 Nivel Defesa: 27
 
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
+----------------------------- 
 
+Distance from goal: 743
 Level: 15
 PODER: 5
 PRECISAO: 6
@@ -97,6 +524,45 @@ CONSTITUICAO: 5
 HP: 5
 Nivel Defesa: 27
 
+----------------------------- 
+
+Distance from goal: 745
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 749
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 789
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 816
 Level: 15
 PODER: 5
 PRECISAO: 5
@@ -106,33 +572,153 @@ CONSTITUICAO: 6
 HP: 6
 Nivel Defesa: 27
 
-Level: 15
-PODER: 7
-PRECISAO: 5
-DEFESA: 2
-CONSTITUICAO: 8
- 
-HP: 21
-Nivel Defesa: 23
+----------------------------- 
 
+Distance from goal: 893
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 2
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 899
 Level: 15
 PODER: 5
-PRECISAO: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 901
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 901
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 14
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 907
+Level: 15
+PODER: 6
+PRECISAO: 5
 DEFESA: 5
 CONSTITUICAO: 6
  
 HP: 6
 Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 922
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 925
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 929
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 7
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 28
+
+----------------------------- 
+
+Distance from goal: 935
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 935
 Level: 15
 PODER: 5
 PRECISAO: 6
 DEFESA: 5
 CONSTITUICAO: 6
  
-HP: 14
+HP: 7
 Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 938
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 943
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 10
+CONSTITUICAO: 2
+ 
+HP: 2
+Nivel Defesa: 35
+
+----------------------------- 
+
+Distance from goal: 945
 Level: 15
 PODER: 5
 PRECISAO: 5
@@ -142,24 +728,9 @@ CONSTITUICAO: 6
 HP: 6
 Nivel Defesa: 28
 
-Level: 15
-PODER: 6
-PRECISAO: 5
-DEFESA: 5
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 26
+----------------------------- 
 
-Level: 15
-PODER: 6
-PRECISAO: 5
-DEFESA: 5
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 26
-
+Distance from goal: 956
 Level: 15
 PODER: 6
 PRECISAO: 5
@@ -169,6 +740,21 @@ CONSTITUICAO: 6
 HP: 6
 Nivel Defesa: 25
 
+----------------------------- 
+
+Distance from goal: 1053
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 1089
 Level: 15
 PODER: 5
 PRECISAO: 6
@@ -178,24 +764,117 @@ CONSTITUICAO: 5
 HP: 5
 Nivel Defesa: 27
 
+----------------------------- 
+
+Distance from goal: 1105
 Level: 15
 PODER: 5
 PRECISAO: 6
 DEFESA: 5
 CONSTITUICAO: 6
  
-HP: 13
+HP: 6
 Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 1117
 Level: 15
 PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 34
+
+----------------------------- 
+
+Distance from goal: 1119
+Level: 15
+PODER: 6
 PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 1121
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1145
+Level: 15
+PODER: 6
+PRECISAO: 5
 DEFESA: 6
 CONSTITUICAO: 5
  
-HP: 1
+HP: 5
 Nivel Defesa: 27
 
+----------------------------- 
+
+Distance from goal: 1145
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 1146
+Level: 15
+PODER: 4
+PRECISAO: 7
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1147
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1149
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1153
 Level: 15
 PODER: 6
 PRECISAO: 5
@@ -205,6 +884,33 @@ CONSTITUICAO: 6
 HP: 6
 Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 1165
+Level: 15
+PODER: 7
+PRECISAO: 5
+DEFESA: 4
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 23
+
+----------------------------- 
+
+Distance from goal: 1171
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 1174
 Level: 15
 PODER: 5
 PRECISAO: 6
@@ -214,6 +920,21 @@ CONSTITUICAO: 5
 HP: 5
 Nivel Defesa: 42
 
+----------------------------- 
+
+Distance from goal: 1174
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1175
 Level: 15
 PODER: 5
 PRECISAO: 5
@@ -221,89 +942,107 @@ DEFESA: 6
 CONSTITUICAO: 6
  
 HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1177
+Level: 15
+PODER: 6
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 1177
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 22
+
+----------------------------- 
+
+Distance from goal: 1179
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 1180
+Level: 15
+PODER: 6
+PRECISAO: 5
+DEFESA: 5
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 23
+
+----------------------------- 
+
+Distance from goal: 1181
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1184
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 35
+
+----------------------------- 
+
+Distance from goal: 1185
+Level: 15
+PODER: 5
+PRECISAO: 2
+DEFESA: 6
+CONSTITUICAO: 9
+ 
+HP: 13
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1186
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
 Nivel Defesa: 28
 
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
+----------------------------- 
 
-Level: 15
-PODER: 6
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 5
- 
-HP: 2
-Nivel Defesa: 27
-
-Level: 15
-PODER: 6
-PRECISAO: 6
-DEFESA: 5
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 26
-
-Level: 15
-PODER: 5
-PRECISAO: 6
-DEFESA: 6
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 34
-
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
-
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
-
-Level: 15
-PODER: 5
-PRECISAO: 6
-DEFESA: 5
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 26
-
-Level: 15
-PODER: 6
-PRECISAO: 6
-DEFESA: 5
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 26
-
-Level: 15
-PODER: 6
-PRECISAO: 6
-DEFESA: 5
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 26
-
+Distance from goal: 1187
 Level: 15
 PODER: 5
 PRECISAO: 6
@@ -313,15 +1052,45 @@ CONSTITUICAO: 5
 HP: 5
 Nivel Defesa: 27
 
+----------------------------- 
+
+Distance from goal: 1187
+Level: 15
+PODER: 5
+PRECISAO: 6
+DEFESA: 6
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 28
+
+----------------------------- 
+
+Distance from goal: 1187
 Level: 15
 PODER: 6
-PRECISAO: 5
+PRECISAO: 6
+DEFESA: 5
+CONSTITUICAO: 5
+ 
+HP: 5
+Nivel Defesa: 26
+
+----------------------------- 
+
+Distance from goal: 1190
+Level: 15
+PODER: 5
+PRECISAO: 6
 DEFESA: 5
 CONSTITUICAO: 6
  
-HP: 14
+HP: 6
 Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 1190
 Level: 15
 PODER: 5
 PRECISAO: 6
@@ -331,15 +1100,21 @@ CONSTITUICAO: 5
 HP: 5
 Nivel Defesa: 27
 
+----------------------------- 
+
+Distance from goal: 1191
 Level: 15
-PODER: 6
-PRECISAO: 6
+PODER: 12
+PRECISAO: 0
 DEFESA: 5
 CONSTITUICAO: 5
  
 HP: 5
 Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 1191
 Level: 15
 PODER: 5
 PRECISAO: 5
@@ -349,6 +1124,33 @@ CONSTITUICAO: 6
 HP: 6
 Nivel Defesa: 27
 
+----------------------------- 
+
+Distance from goal: 1194
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1198
+Level: 15
+PODER: 5
+PRECISAO: 5
+DEFESA: 6
+CONSTITUICAO: 6
+ 
+HP: 6
+Nivel Defesa: 27
+
+----------------------------- 
+
+Distance from goal: 1203
 Level: 15
 PODER: 6
 PRECISAO: 5
@@ -358,6 +1160,9 @@ CONSTITUICAO: 6
 HP: 6
 Nivel Defesa: 26
 
+----------------------------- 
+
+Distance from goal: 1204
 Level: 15
 PODER: 5
 PRECISAO: 5
@@ -367,6 +1172,9 @@ CONSTITUICAO: 6
 HP: 6
 Nivel Defesa: 27
 
+----------------------------- 
+
+Distance from goal: 1209
 Level: 15
 PODER: 5
 PRECISAO: 5
@@ -374,77 +1182,19 @@ DEFESA: 6
 CONSTITUICAO: 6
  
 HP: 6
-Nivel Defesa: 27
+Nivel Defesa: 35
 
+----------------------------- 
+
+Distance from goal: 1310
 Level: 15
 PODER: 5
 PRECISAO: 5
 DEFESA: 6
 CONSTITUICAO: 6
  
-HP: 6
+HP: 3
 Nivel Defesa: 27
 
-Level: 15
-PODER: 6
-PRECISAO: 5
-DEFESA: 5
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 26
-
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
-
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
-
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
-
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 22
-Nivel Defesa: 27
-
-Level: 15
-PODER: 5
-PRECISAO: 6
-DEFESA: 5
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 26
-
-Level: 15
-PODER: 5
-PRECISAO: 5
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 0
-Nivel Defesa: 27
+----------------------------- 
 

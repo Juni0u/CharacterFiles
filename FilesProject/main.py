@@ -35,7 +35,7 @@ def battle (player, NPC):
             if player.hp < 1:
                 return True, rounds
         rounds += 1
-    return True, rounds
+    return False, rounds #if rounds > rounds limit then NPC LOST!
 
 def tourney (battle_number, pop, ref):
     """INPUTS: pop_size, qtd of battles against each NPC, population of enemies, reference player
@@ -59,13 +59,13 @@ def tourney (battle_number, pop, ref):
 # [%] of win desired
 goal = 75    
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
-battle_number = 1000
+battle_number = 2000
 #Popolation size
-pop_size = 50
+pop_size = 100
 #Generations
 gen = 300
 # [%] of elitism considered
-elitism = 10
+elitism = 5
 ###########################################################
 # Player Character who is going to be the reference
 ref = char(15, 3 ,5 ,8 ,6)
@@ -88,14 +88,16 @@ GA = GAtoolbox()
 #AlgoFLOW #TODO: O algoritmo ta configurado pro melhor boneco ser o que venceu mais. nao e isso que eu quero! a fitness function e a distancia do meu alvo de vitorias!
 for g in range(gen):
     #print("======================")
-    #print("Gen ",i)
+    #print("Gen ", g+1)
     result = tourney(battle_number, pop, ref)
     #print("result antes:" , result)
     for i in range(len(result)):
         result[i] = abs(result[i] - true_goal)
     #print("result com true goal:", result)
     sorted_indices = sorted(range(len(result)), key=lambda i: result[i], reverse=False) #This gives a list with the sorted indexes of a result list -> first_result[sorted_indices[0] is the individual with the most wins]
+    saved_std_indices = sorted_indices.copy()
     #print("indeces de result ordenado ", sorted_indices)
+    #print("saved sorted indices", saved_std_indices)
     
     #Separate Elite
     for j in range(elite_num):
@@ -158,19 +160,23 @@ for g in range(gen):
     pop = new_pop
     new_pop = []
     
+    #print("saved sorted indices", saved_std_indices)
+
+
     #if (g-1) in gen2print: 
     print("============RESULTS============")
     print("GENERATION: ", g+1)
     print()
     for i in range(2):
-        print(pop[sorted_indices[i]])
-        print(result[sorted_indices[i]])    
+        print(pop[saved_std_indices[i]])
+        print("Distance from goal: ",result[saved_std_indices[i]])    
         print()  
 
 with open("characters.txt", "w") as f:
-    for character in pop:
+    for i,character in enumerate(pop):
+        f.write("Distance from goal: " + str(result[saved_std_indices[i]]) + "\n")
         f.write(str(character) + "\n")
-
+        f.write("----------------------------- \n\n")
 
 
 #Getting how far from the goal each individual is
