@@ -4,7 +4,8 @@ from Game_system import GAtoolbox
 from Game_system import parameter as param
 import random as rd
 import numpy as np
- 
+
+#smol change 
 def create_population (n,lvl):
     """Creates the population of n individuals of level lvl"""
     players = []
