@@ -5,6 +5,15 @@ PARAM_FILE = "PARAMETERS.json"
 class AttrOutOfRangeError(Exception):
     pass
 
+class LvlIsBellowOne(Exception):
+    pass
+
+class MutationProbIsOutOfBounds(Exception):
+    pass
+
+class WeightSumIsNotOne(Exception):
+    pass
+
 class parameter(object):
     def __init__(self, archive_name):
         with open(archive_name,'r') as arq:
@@ -14,7 +23,6 @@ class parameter(object):
 
 class Game_system():
     def roll_dices(self):
-    #TODO: Is there a critical role?    
         """This function rolls 3 1d6 and returns the sum of them."""
         dice1 = rd.randint(1,6)  
         dice2 = rd.randint(1,6) 
@@ -41,13 +49,14 @@ class Game_system():
         self.hp = self.con
 
 class Character(Game_system):        
-    def __init__(self,lvl, pdr,pre,defe,con):
+    def __init__(self, pdr,pre,defe,con,lvl=0):
         """Rules for character creation:
-        - Starting points: 1 (PDR), 1(PRE), 1(DEFE), 3(CON) [6points]
-        - Each lvl grants 1 point. In lvl 1 -> 1 Point to distribute; [lvl points]
+        - Starting points: 1 (PDR), 1(PRE), 1(DEFE), 3(CON) [6 total]
+        - Each lvl grants 1 point. In lvl 1 -> 1 Point to distribute; [lvl + 6 total]
         - Bonus Point depeding on the Race. Here this bonus is considered by the
-        distribution of lvl+1 points. The extra point is the bonus point. [1points]
-        - So the max sum each character can have is lvl + 6 + 1 = lvl + 7"""
+        distribution of lvl+1 points. The extra point is the bonus point. [lvl + 7 total]
+        - So the max sum each character can have is lvl + 6 + 1 = lvl + 7
+        - If the given lvl is 0, the level is calculated based on the point distribution"""
         
 
         # if (pdr) < 1 or (pre) < 1 or (defe) < 1:
@@ -57,19 +66,33 @@ class Character(Game_system):
         # elif (pdr+pre+defe+con) > lvl+7:
         #     raise AttrOutOfRangeError("Max atributes must be lvl+7")
 
-        self.lvl = lvl
         self.pdr = pdr
         self.pre = pre 
         self.defe = defe
-        self.con = con
+        self.con = con   
+
+        #PRESTAR ATENCAO PRO VALOR DO LVL NUNCA SER MENOR QUER ZERO
+        if lvl==0:
+            self.fix_min_distribution()
+            self.lvl = (pdr+pre+defe+con)-7
+
+        else:
+            self.lvl = lvl
+            self.max_sum = self.lvl + 7
+            self.fix_distribution()
+
+        if self.lvl < 1:
+            print("To aqui")
+            print(self.lvl)
+            #raise LvlIsBellowOne     
+
         self.lvlbonus = int(self.lvl*3/4)
         self.defense = self.defe + self.lvlbonus + 10
         self.hp = con
-        self.max_sum = self.lvl + 7
+
 #        print("antes: ", self.pdr+self.pre+self.defe+self.con)
 #        print("tem que ter: ", self.max_sum)
 #        print()
-        self.fix_distribution()
 #        print("depois: ", self.pdr+self.pre+self.defe+self.con)
 #        print()
 
@@ -83,7 +106,20 @@ class Character(Game_system):
                 "HP: "+ str(self.hp)+"\n"+
                 "Nivel Defesa: "+str(self.defense)+"\n")   
     
+    def fix_min_distribution(self):
+        "Adjust atribute value if they are bellow the minimum"
+        while self.pdr < 1:
+            self.pdr += 1
+        while self.pre < 1:
+            self.pre += 1
+        while self.defe < 1:
+            self.defe += 1
+        while self.con < 3:
+            self.con +=1 
+
     def fix_distribution(self):
+        "When the character lvl is given, its atributte distribution have to follow the rules"
+        self.fix_min_distribution
         atrib_list = [self.pdr,self.pre,self.defe,self.con]
         while sum(atrib_list) > self.max_sum:
             if (atrib_list.index(max(atrib_list)) == 3) and (atrib_list[atrib_list.index(max(atrib_list))] == 3): #If biggest atrib is CON [index3] and its value is 3 (3 is its MINIMAL value)
@@ -105,27 +141,37 @@ class Character(Game_system):
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
     
-    def __init__(self,bin_rep=5, mut_prob=0.03):
-        """binrep = how many bits represents each atribute
-        mut_atrib = how many atributes go through mutation each time
-        mut_prob = Mutation probability (between 0 and 1)"""
+    def __init__(self,wins_goal,duration_goal,battle_number,
+                 pop_size, gen,
+                 bin_rep=5, mut_prob=0.03, 
+                 weight_wins=0.75, weight_duration=0.25
+                 ):
+        """binrep = how many bits represents each atribute\n
+        mut_prob = Mutation probability (between 0 and 1)
+        weight_wins/weight_duration = Weight to apply in fitness function, sum has to be 1."""
 #        self.parameters = parameter(PARAM_FILE) #TODO: Adjust a parameter file
+        self.wins_goal = int(battle_number * wins_goal/100)
+        self.pop_size = pop_size
+        self.gen = gen
+        self.duration_goal = duration_goal
         self.bin_rep = bin_rep
         self.mut_prob = mut_prob
-
+        self.weight_wins = weight_wins
+        self.weight_duration = weight_duration
         if mut_prob > 1 or mut_prob < 0:
-            print("mut_prob out of bounds, value set to 0.03.")
-            self.mut_prob = 0.03
+            raise (MutationProbIsOutOfBounds)
+        if (weight_duration+weight_wins) != 1:
+            raise(WeightSumIsNotOne)
 
-    def dec2bin(self,n):
-        """Input: A number in decimal
-        Output: The same in [bin_rep] bit binary"""
+    def dec2bin(self,n: int):
+        """I = A number in decimal\n
+        O = The same in [bin_rep] bit binary"""
         output = bin(n)[2:].zfill(self.bin_rep)
         return(output)
     
-    def char2gene(self,char):
-        """Input: Character (object)
-        Output: Character's attributes coded into binary"""
+    def char2gene(self,char: object):
+        """I = Character (object)\n
+        O = Character's attributes coded into binary"""
         binPdr=self.dec2bin(char.pdr)
         binPre=self.dec2bin(char.pre)
         binDefe=self.dec2bin(char.defe)
@@ -134,8 +180,8 @@ class GAtoolbox():
         return binPdr+binPre+binDefe+binCon
     
     def gene2char(self,bin):
-        """Input: Binary
-        Output: List [PDR,PRE,DEFE,CON]"""
+        """I = Binary\n
+        O = List [PDR,PRE,DEFE,CON]"""
         output = []
 #        print("bin:",bin)
         for i in range(0,len(bin),self.bin_rep):
@@ -144,9 +190,9 @@ class GAtoolbox():
         return output
     
     def crossover (self,gene1,gene2):
-        """[atrib1][atrib2][atrib3][atrib4]
-        each time one of the three beginning positions will be chosen (beginning of atrib1, 2 or 3)
-        and also a final position too, after the beginning one.
+        """[atrib1][atrib2][atrib3][atrib4]\n
+        Each time one of the three beginning positions will be chosen (beginning of atrib1, 2 or 3)\n
+        and also a final position too, after the beginning one.\n
         One part will be from gene1 and the other from gene2"""
         #               10
         # 01234  56789  01234  56789
@@ -193,5 +239,34 @@ class GAtoolbox():
         #print()
         return "".join(gene)    
     
+    def fitness_function(self, wins, avg_dur):
+        fit = (abs(wins - self.wins_goal) * self.weight_wins) + (abs(avg_dur - self.duration_goal) * self.weight_duration)
+        return fit
+    
+    def selection(self,pop_fitness: list):
+        """Groups of 4 indiv. are randomly formed.
+        The best goes to next gen.
+        The second and third are chosen to reproduction set.
+        The forth is killed."""
+        tournment_group_size = 4
+        elitism = 1     
+        parents = []  
+        new_pop = []
+        t_group = []
+        for i in range(int(self.pop_size/tournment_group_size)):
+            for j in range(tournment_group_size):
+                choice = rd.sample(range(len(pop_fitness)), 1)[0]
+                t_group.append(pop_fitness[choice])
+                pop_fitness.remove(pop_fitness[choice])
+            
 
+
+            #escolher 4 cabecas
+            >pegar o maior fitness e colocar direto na new pop
+            apagar o pior
+            o resto vai pras parents
+
+
+    def execute(self, filename="characters.txt"):
+        pass
         

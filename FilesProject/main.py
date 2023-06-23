@@ -1,4 +1,4 @@
-from Game_system import Game_system as gs
+from Game_system import Game_system
 from Game_system import Character as char
 from Game_system import GAtoolbox
 from Game_system import parameter as param
@@ -14,13 +14,13 @@ def create_population (n,lvl):
         pre = rd.randint(0, lvl+1-pdr) 
         defe = rd.randint(0, lvl+1-pdr-pre)
         con = (lvl+1-pdr-pre-defe)
-        players.append(char(lvl,pdr+1,pre+1,defe+1,con+3))
+        players.append(char(pdr+1,pre+1,defe+1,con+3,lvl))
     return players
 
-def battle (player, NPC):
-    """This function executes the battle itself. 
-    Input: Player and NPC that will be fighting
-    Output: True for NPC WIN"""
+def battle (player, NPC: object):
+    """This function executes the battle itself.\n 
+    I = Player and NPC that will be fighting\n
+    O = True for NPC WIN"""
     limit_round = 25
     rounds = 0
     player.reset_hp()
@@ -42,64 +42,81 @@ def tourney (battle_number, pop, ref):
     """INPUTS: pop_size, qtd of battles against each NPC, population of enemies, reference player
     OUTPUT: List of how many wins each enemy got, List of how many rounds each fight took to end"""
     wins = 0
+    rounds_sum = 0
     result = [] #list that saves how many wins each individual of 'pop' got.
+    rounds_avg = [] #list that saves the AVG duration of battles each individual of 'pop' got.
     #rounds = [[] for i in range(pop_size)] #list of how many rounds each battle took to end
     for k, enemy in enumerate(pop):
+        #print()
+        #print("enemy ", k)
         for i in range(0,battle_number):
             battle_result,round_qty = battle(ref,enemy)
-            #rounds[k].append(round_qty)
+            #print("battle ",i," - result = ",battle_result)
+            rounds_sum += round_qty
             if battle_result:
                 wins += 1
         result.append(wins)
+        rounds_avg.append(rounds_sum/battle_number)
         wins = 0 
-    return result#, rounds
-
+        rounds_sum = 0
+    return result, rounds_avg
 
  #Funcao a ser optimizada: Numero de vitorias em X batalhas.
 ######################### INPUTS ##########################
-# [%] of win desired
-goal = 75    
+# [%] of NPC win desired
+wins_goal = 10
+# how many rounds should the battle have
+duration_goal = 5 
 #Number of fights the character and NPC will fight, the higher the more precise the output is.
-battle_number = 2000
+battle_number = 10
 #Popolation size
-pop_size = 100
+pop_size = 10
 #Generations
-gen = 300
+gen = 1
 # [%] of elitism considered
-elitism = 5
+elitism = 10
 ###########################################################
 # Player Character who is going to be the reference
-ref = char(15, 3 ,5 ,8 ,6)
+ref = char(3 ,5 ,8 ,6, 15)
 # Actual desired number of wins to be considered in the algorithm.
-true_goal = int(battle_number * goal/100)  
+wins_true_goal = int(battle_number * wins_goal/100)  
 #print("true goal is:", true_goal)
 # Number of individuals that'll be kept through a generation due to elitism
 elite_num = int(elitism * pop_size/100)  
 #print("individuals in elite is:", elite_num)
 # Initial Population 
 pop = create_population(pop_size,ref.lvl)
+
 # Initialization 
 all_pop = [[] for i in range(gen)] #list of all populations (one for each generation)
 new_pop = []
 used_parent = []
-GA = GAtoolbox()
+pop_fitness = []
+GA = GAtoolbox(wins_goal=wins_goal,
+               duration_goal=duration_goal,
+               battle_number=battle_number,
+               gen=gen,
+               pop_size=pop_size,
+               weight_duration=0.5,
+               weight_wins=0.5)
+GS = Game_system()
+
 #TODO: A list to save all results of some generations?
 #TODO: A list to save how many rounds each battle took? Or maybe just the average?
 
-#AlgoFLOW #TODO: O algoritmo ta configurado pro melhor boneco ser o que venceu mais. nao e isso que eu quero! a fitness function e a distancia do meu alvo de vitorias!
 for g in range(gen):
     #print("======================")
-    #print("Gen ", g+1)
-    result = tourney(battle_number, pop, ref)
-    #print("result antes:" , result)
+    print("Gen ", g+1)
+    result, rounds = tourney(battle_number, pop, ref)
     for i in range(len(result)):
-        result[i] = abs(result[i] - true_goal)
-    #print("result com true goal:", result)
-    sorted_indices = sorted(range(len(result)), key=lambda i: result[i], reverse=False) #This gives a list with the sorted indexes of a result list -> first_result[sorted_indices[0] is the individual with the most wins]
-    saved_std_indices = sorted_indices.copy()
-    #print("indeces de result ordenado ", sorted_indices)
-    #print("saved sorted indices", saved_std_indices)
+        pop_fitness.append(GA.fitness_function(wins=result[i],avg_dur=rounds[i]))
     
+    GA.selection(pop_fitness=pop_fitness)
+    
+    
+    sorted_indices = sorted(range(len(pop_fitness)), key=lambda i: pop_fitness[i], reverse=False) #This gives a list with the sorted indexes of a result list -> first_result[sorted_indices[0] is the individual with the most wins]
+    #saved_std_indices = sorted_indices.copy()
+        
     #Separate Elite
     for j in range(elite_num):
         #print("---elite---")
@@ -140,7 +157,7 @@ for g in range(gen):
        
         for child in children:
             child = GA.gene2char(child)
-            child = char(ref.lvl, child[0], child[1], child[2], child[3])
+            child = char(child[0], child[1], child[2], child[3], ref.lvl)
             new_pop.append(child)         
 
     #Do Mutation for those that are not elites
@@ -151,7 +168,7 @@ for g in range(gen):
         indiv = GA.char2gene(indiv)
         indiv = GA.mutation(indiv)
         indiv = GA.gene2char(indiv)
-        indiv = char(ref.lvl, indiv[0], indiv[1], indiv[2], indiv[3])
+        indiv = char(indiv[0], indiv[1], indiv[2], indiv[3], ref.lvl)
         new_pop[k] = indiv
         #print("after")
         #print(indiv)
@@ -165,13 +182,13 @@ for g in range(gen):
 
 
     #if (g-1) in gen2print: 
-    print("============RESULTS============")
+"""    print("============RESULTS============")
     print("GENERATION: ", g+1)
     print()
     for i in range(2):
         print(pop[saved_std_indices[i]])
         print("Distance from goal: ",result[saved_std_indices[i]])    
-        print()  
+        print() """
 
 with open("characters.txt", "w") as f:
     for i,character in enumerate(pop):
