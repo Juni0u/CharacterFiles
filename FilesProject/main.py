@@ -6,16 +6,7 @@ import random as rd
 import numpy as np
 
 #smol change 
-def create_population (n,lvl):
-    """Creates the population of n individuals of level lvl"""
-    players = []
-    for i in range (0,n):
-        pdr = rd.randint(0, lvl+1)
-        pre = rd.randint(0, lvl+1-pdr) 
-        defe = rd.randint(0, lvl+1-pdr-pre)
-        con = (lvl+1-pdr-pre-defe)
-        players.append(char(pdr+1,pre+1,defe+1,con+3,lvl))
-    return players
+
 
 def battle (player, NPC: object):
     """This function executes the battle itself.\n 
@@ -91,8 +82,8 @@ pop = create_population(pop_size,ref.lvl)
 all_pop = [[] for i in range(gen)] #list of all populations (one for each generation)
 new_pop = []
 used_parent = []
-pop_fitness = []
-GA = GAtoolbox(wins_goal=wins_goal,
+GA = GAtoolbox(start_pop=pop,
+               wins_goal=wins_goal,
                duration_goal=duration_goal,
                battle_number=battle_number,
                gen=gen,
@@ -109,8 +100,9 @@ for g in range(gen):
     print("Gen ", g+1)
     result, rounds = tourney(battle_number, pop, ref)
     for i in range(len(result)):
-        pop_fitness.append(GA.fitness_function(wins=result[i],avg_dur=rounds[i]))
-    
+        #pop_fitness.append(GA.fitness_function(wins=result[i],avg_dur=rounds[i]))
+        
+
     GA.selection(pop_fitness=pop_fitness)
     
     

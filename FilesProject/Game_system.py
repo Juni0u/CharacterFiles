@@ -14,6 +14,9 @@ class MutationProbIsOutOfBounds(Exception):
 class WeightSumIsNotOne(Exception):
     pass
 
+class NotStartPopulationSet(Exception):
+    pass
+
 class parameter(object):
     def __init__(self, archive_name):
         with open(archive_name,'r') as arq:
@@ -47,6 +50,41 @@ class Game_system():
     def reset_hp (self):
         """This functions resets the HP of a character to full."""
         self.hp = self.con
+
+    def battle (self, enemy: object, round_limit=25):
+        """This function executes the battle itself.\n 
+        I = Enemy that will be fighting\n
+        O = True for ENEMY WIN"""
+        rounds = 0
+        self.reset_hp()
+        enemy.reset_hp()
+
+        #print(round_limit)
+
+        while rounds < round_limit:
+            if self.attack(enemy):
+                enemy.update_hp(-self.pdr)
+                if enemy.hp < 1:
+                    return False, rounds
+            if enemy.attack(self):     
+                self.update_hp(-self.pdr)
+                if self.hp < 1:
+                    return True, rounds
+            rounds += 1
+        return False, rounds #if rounds > rounds limit then NPC LOST!
+    
+    def tourney (self, battle_number, enemy):
+        """INPUTS: Number of battles self will battle enemy
+        OUTPUT: number of wins enemy got, avg number of rounds battle took"""
+        wins = 0
+        rounds_sum = 0
+        for i in range(0,battle_number):
+            battle_result,round_qty = self.battle(enemy)
+            #print("battle ",i," - result = ",battle_result)
+            rounds_sum += round_qty
+            if battle_result:
+                wins += 1
+        return wins, (rounds_sum/battle_number)
 
 class Character(Game_system):        
     def __init__(self, pdr,pre,defe,con,lvl=0):
@@ -143,6 +181,7 @@ class GAtoolbox():
     
     def __init__(self,wins_goal,duration_goal,battle_number,
                  pop_size, gen,
+                 start_pop = [],
                  bin_rep=5, mut_prob=0.03, 
                  weight_wins=0.75, weight_duration=0.25
                  ):
@@ -150,6 +189,9 @@ class GAtoolbox():
         mut_prob = Mutation probability (between 0 and 1)
         weight_wins/weight_duration = Weight to apply in fitness function, sum has to be 1."""
 #        self.parameters = parameter(PARAM_FILE) #TODO: Adjust a parameter file
+        self.start_pop = start_pop
+        self.final_pop = []
+        self.battle_number = battle_number
         self.wins_goal = int(battle_number * wins_goal/100)
         self.pop_size = pop_size
         self.gen = gen
@@ -243,30 +285,78 @@ class GAtoolbox():
         fit = (abs(wins - self.wins_goal) * self.weight_wins) + (abs(avg_dur - self.duration_goal) * self.weight_duration)
         return fit
     
+    def create_population (self, lvl):
+        """Creates the population of n individuals of level lvl"""
+        players = []
+        GA_pop = []
+        for i in range (0,self.pop_size):
+            pdr = rd.randint(0, lvl+1)
+            pre = rd.randint(0, lvl+1-pdr) 
+            defe = rd.randint(0, lvl+1-pdr-pre)
+            con = (lvl+1-pdr-pre-defe)
+            players.append(Character(pdr+1,pre+1,defe+1,con+3,lvl))
+            GA_pop.append(GAindividual(character_obj=players[i]))
+            self.start_pop = GA_pop
+
+
     def selection(self,pop_fitness: list):
         """Groups of 4 indiv. are randomly formed.
         The best goes to next gen.
         The second and third are chosen to reproduction set.
         The forth is killed."""
         tournment_group_size = 4
-        elitism = 1     
         parents = []  
         new_pop = []
         t_group = []
         for i in range(int(self.pop_size/tournment_group_size)):
+            print("i = ", i)
             for j in range(tournment_group_size):
-                choice = rd.sample(range(len(pop_fitness)), 1)[0]
-                t_group.append(pop_fitness[choice])
-                pop_fitness.remove(pop_fitness[choice])
-            
+                choice = rd.randint(0,len(pop_fitness)-1) # Chose one random INDEX
+                t_group.append(choice)                    # Add INDEX to tournment group
+                pop_fitness.remove(pop_fitness[choice])   # Remove ELEMENT for next choices
+            print("grupo = ", t_group)
+            new_pop.append(t_group.index(max(t_group))) #Put the best fit in the new_pop
+            t_group.remove(min(t_group)) #Remove the smallest fit
+            t_group.remove(max(t_group)) #Remove the biggest fit to prepare for next line
+            parents.extend(t_group)      #Put the rest into the parents to reproduce
+            print("Elites = ", new_pop)
+            print("Parents = ", parents)
+            print()
+            t_group = []
 
+        return new_pop
 
-            #escolher 4 cabecas
-            >pegar o maior fitness e colocar direto na new pop
-            apagar o pior
-            o resto vai pras parents
+    def evolve(self, reference_player, filename="characters.txt"):
+        ref = GAindividual(reference_player)
+        if self.start_pop == []:
+            self.create_population(ref.character.lvl)
 
+        pop = self.start_pop
+        for gen in range(self.gen):
+            #print("======================")
+            #print("Gen ", gen+1)
+            for individual in pop: 
+                result, rounds = ref.character.tourney(battle_number=self.battle_number, enemy=individual.character)
+                individual_fit = self.fitness_function(wins=result,avg_dur=rounds)
+                individual.setFit(individual_fit)
+                
+        
+        
+        
+        
 
-    def execute(self, filename="characters.txt"):
-        pass
+    
+class GAindividual(GAtoolbox):
+    def __init__(self, character_obj, fitness=99999):
+        self.character = character_obj
+        self.fit = fitness
+
+    def __str__(self):
+        return str(self.fit)
+
+    def setFit(self, new_fit):
+        self.fit = new_fit
+
+    def getFit(self):
+        return self.fit
         
