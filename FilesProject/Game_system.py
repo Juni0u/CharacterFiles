@@ -17,6 +17,9 @@ class WeightSumIsNotOne(Exception):
 class NotStartPopulationSet(Exception):
     pass
 
+class PopulationIsNotMultipleOf4(Exception):
+    pass
+
 class parameter(object):
     def __init__(self, archive_name):
         with open(archive_name,'r') as arq:
@@ -200,6 +203,8 @@ class GAtoolbox():
         self.mut_prob = mut_prob
         self.weight_wins = weight_wins
         self.weight_duration = weight_duration
+        if pop_size % 4 !=0:
+            raise(PopulationIsNotMultipleOf4)
         if mut_prob > 1 or mut_prob < 0:
             raise (MutationProbIsOutOfBounds)
         if (weight_duration+weight_wins) != 1:
@@ -295,11 +300,11 @@ class GAtoolbox():
             defe = rd.randint(0, lvl+1-pdr-pre)
             con = (lvl+1-pdr-pre-defe)
             players.append(Character(pdr+1,pre+1,defe+1,con+3,lvl))
-            GA_pop.append(GAindividual(character_obj=players[i]))
+            GA_pop.append(GAindividual(id=i+1,character_obj=players[i]))
             self.start_pop = GA_pop
 
 
-    def selection(self,pop_fitness: list):
+    def selection(self,gen, pop):
         """Groups of 4 indiv. are randomly formed.
         The best goes to next gen.
         The second and third are chosen to reproduction set.
@@ -309,6 +314,7 @@ class GAtoolbox():
         new_pop = []
         t_group = []
         for i in range(int(self.pop_size/tournment_group_size)):
+            #TODO: Ajustar essa funcao 
             print("i = ", i)
             for j in range(tournment_group_size):
                 choice = rd.randint(0,len(pop_fitness)-1) # Chose one random INDEX
@@ -327,27 +333,27 @@ class GAtoolbox():
         return new_pop
 
     def evolve(self, reference_player, filename="characters.txt"):
-        ref = GAindividual(reference_player)
+        ref = GAindividual(0,reference_player)
         if self.start_pop == []:
             self.create_population(ref.character.lvl)
 
         pop = self.start_pop
         for gen in range(self.gen):
-            #print("======================")
-            #print("Gen ", gen+1)
+            print("======================")
+            print("Gen ", gen+1)
+
+            # Calculate each individual's fitness
             for individual in pop: 
                 result, rounds = ref.character.tourney(battle_number=self.battle_number, enemy=individual.character)
                 individual_fit = self.fitness_function(wins=result,avg_dur=rounds)
-                individual.setFit(individual_fit)
-                
-        
-        
-        
-        
+                individual.setFit(new_fit=individual_fit)
 
-    
+            # Perform selection
+            #new_pop = self.selection(gen=gen,pop=pop)
+
 class GAindividual(GAtoolbox):
-    def __init__(self, character_obj, fitness=99999):
+    def __init__(self, id, character_obj, fitness=99999):
+        self.id = id                     #object identifier
         self.character = character_obj
         self.fit = fitness
 

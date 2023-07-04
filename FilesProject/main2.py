@@ -16,4 +16,3 @@ GA = GAtoolbox(wins_goal=10,duration_goal=5,
 
 #### This will be inside the start the algorithm function
 GA.evolve(ref)
-
