@@ -314,20 +314,61 @@ class GAtoolbox():
         new_pop = []
         t_group = []
         for i in range(int(self.pop_size/tournment_group_size)):
-            #TODO: Ajustar essa funcao 
-            print("i = ", i)
-            for j in range(tournment_group_size):
-                choice = rd.randint(0,len(pop_fitness)-1) # Chose one random INDEX
-                t_group.append(choice)                    # Add INDEX to tournment group
-                pop_fitness.remove(pop_fitness[choice])   # Remove ELEMENT for next choices
-            print("grupo = ", t_group)
-            new_pop.append(t_group.index(max(t_group))) #Put the best fit in the new_pop
-            t_group.remove(min(t_group)) #Remove the smallest fit
-            t_group.remove(max(t_group)) #Remove the biggest fit to prepare for next line
-            parents.extend(t_group)      #Put the rest into the parents to reproduce
-            print("Elites = ", new_pop)
-            print("Parents = ", parents)
-            print()
+            #print("i = ", i)
+            t_group = rd.sample(pop,tournment_group_size)
+            for element in t_group:
+                pop.remove(element)
+                
+            elite = min(t_group, key=lambda obj: obj.fit)
+            t_group.remove(elite)
+            dead = max(t_group, key=lambda obj: obj.fit)
+            t_group.remove(dead)
+            survivors = t_group
+            new_pop.append(elite)
+            parents += survivors
+            #No final do loop de cima, todos os elites ja estao na nova populacao
+            #Com os dois pais, cria-se dois filhos
+            parent1 = self.char2gene(survivors[0].character)
+            parent2 = self.char2gene(survivors[1].character)
+            children = self.crossover(parent1, parent2)
+
+            for child in children:
+                child = self.gene2char(child)
+                child = Character(pdr=child[0],pre=child[1],defe=child[2],con=child[3])
+                childGA = GAindividual(id=self.pop_size+gen*i,character_obj=child,fitness=99999) 
+                new_pop.append(childGA)
+        #TODO: OLHAR ESSA PARTE DO CODIGO
+        #COMO AINDA FALTAM INDIVIDUOS PRA PREENCHER A POPULACAO, EU TO PEGANDO 
+        #PAIS ALEATORIOS E PEGANDO O PRIMEIRO FILHO DELES PRA PREENCHER A POPULACAO
+        #O PROCESSO TA SENDO MUITO PARECIDO, TALVEZ EU DEVA FAZER UMA FUNCAO DE REPRODUCAO
+        for j in range(self.pop_size-len(new_pop)):
+            print("j = ", j)
+            couple = rd.sample(parents,2)
+            for parent in couple:
+                parents.remove(parent)
+            
+            child,_= self.crossover(self.char2gene(couple[0].character),
+                                    self.char2gene(couple[1].character))
+            
+            child = self.gene2char(child)
+            child = Character(pdr=child[0],pre=child[1],defe=child[2],con=child[3])
+            childGA = GAindividual(id=self.pop_size+gen*i,character_obj=child,fitness=99999) 
+            new_pop.append(childGA)
+
+
+
+
+
+                
+#                pop_fitness.remove(pop_fitness[choice])   # Remove ELEMENT for next choices
+#            print("grupo = ", t_group)
+#            new_pop.append(t_group.index(max(t_group))) #Put the best fit in the new_pop
+#            t_group.remove(min(t_group)) #Remove the smallest fit
+#            t_group.remove(max(t_group)) #Remove the biggest fit to prepare for next line
+#            parents.extend(t_group)      #Put the rest into the parents to reproduce
+#            print("Elites = ", new_pop)
+#            print("Parents = ", parents)
+#            print()
             t_group = []
 
         return new_pop
@@ -349,7 +390,7 @@ class GAtoolbox():
                 individual.setFit(new_fit=individual_fit)
 
             # Perform selection
-            #new_pop = self.selection(gen=gen,pop=pop)
+            new_pop = self.selection(gen=gen,pop=pop)
 
 class GAindividual(GAtoolbox):
     def __init__(self, id, character_obj, fitness=99999):
@@ -357,8 +398,16 @@ class GAindividual(GAtoolbox):
         self.character = character_obj
         self.fit = fitness
 
+    def __hash__(self):
+        return hash(self.id)
+
     def __str__(self):
-        return str(self.fit)
+        return str("id: "+str(self.id)+" / fitness: "+str(self.fit))
+    
+    def __eq__(self, other):
+        if isinstance(other, GAindividual):
+            return self.id == other.id
+        return False
 
     def setFit(self, new_fit):
         self.fit = new_fit
