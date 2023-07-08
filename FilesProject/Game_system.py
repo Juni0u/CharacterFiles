@@ -303,6 +303,26 @@ class GAtoolbox():
             GA_pop.append(GAindividual(id=i+1,character_obj=players[i]))
             self.start_pop = GA_pop
 
+    def reproduction(self,parent1,parent2):
+        """Function to reproduce. Mutation is run here too.
+        Input: [GAindividual]: 2 Parents
+        Output: [Character]: 2 children"""
+        #Parents are transformed to genes 
+        parent1 = self.char2gene(parent1.character)
+        parent2 = self.char2gene(parent2.character)
+        #Crossover is done, output is still genes
+        children = self.crossover(parent1, parent2)
+        children_final = []
+        for child in children:
+            #print("before:",child)
+            #Mutation is run
+            child = self.mutation(child)
+            #print("after: ",child)
+            #Child is transformed back to character object
+            child = self.gene2char(child)
+            child = Character(pdr=child[0],pre=child[1],defe=child[2],con=child[3])
+            children_final.append(child)
+        return children_final
 
     def selection(self,gen, pop):
         """Groups of 4 indiv. are randomly formed.
@@ -320,6 +340,7 @@ class GAtoolbox():
                 pop.remove(element)
                 
             elite = min(t_group, key=lambda obj: obj.fit)
+            print(elite.fit)
             t_group.remove(elite)
             dead = max(t_group, key=lambda obj: obj.fit)
             t_group.remove(dead)
@@ -328,33 +349,23 @@ class GAtoolbox():
             parents += survivors
             #No final do loop de cima, todos os elites ja estao na nova populacao
             #Com os dois pais, cria-se dois filhos
-            parent1 = self.char2gene(survivors[0].character)
-            parent2 = self.char2gene(survivors[1].character)
-            children = self.crossover(parent1, parent2)
-
+            children = self.reproduction(survivors[0],survivors[1])
             for child in children:
-                child = self.gene2char(child)
-                child = Character(pdr=child[0],pre=child[1],defe=child[2],con=child[3])
                 childGA = GAindividual(id=self.pop_size+gen*i,character_obj=child,fitness=99999) 
                 new_pop.append(childGA)
-        #TODO: OLHAR ESSA PARTE DO CODIGO
-        #COMO AINDA FALTAM INDIVIDUOS PRA PREENCHER A POPULACAO, EU TO PEGANDO 
-        #PAIS ALEATORIOS E PEGANDO O PRIMEIRO FILHO DELES PRA PREENCHER A POPULACAO
-        #O PROCESSO TA SENDO MUITO PARECIDO, TALVEZ EU DEVA FAZER UMA FUNCAO DE REPRODUCAO
+
+        #Completando a populacao: dois pais sao selecionados aleatoriamente de todos os pais possiveis
+        #o primeiro filho e utilizado e o segundo descatardo
+        #isso e feito ate completar a populacao
         for j in range(self.pop_size-len(new_pop)):
-            print("j = ", j)
+            #print("j = ", j)
             couple = rd.sample(parents,2)
             for parent in couple:
                 parents.remove(parent)
-            
-            child,_= self.crossover(self.char2gene(couple[0].character),
-                                    self.char2gene(couple[1].character))
-            
-            child = self.gene2char(child)
-            child = Character(pdr=child[0],pre=child[1],defe=child[2],con=child[3])
+            child,_ = self.reproduction(couple[0],couple[1])
             childGA = GAindividual(id=self.pop_size+gen*i,character_obj=child,fitness=99999) 
             new_pop.append(childGA)
-
+            #print(len(new_pop))
 
 
 
@@ -391,6 +402,13 @@ class GAtoolbox():
 
             # Perform selection
             new_pop = self.selection(gen=gen,pop=pop)
+            print("FITNESS = ",new_pop[0].fit)
+            print(new_pop[0].character)
+            
+            #update population
+            pop = new_pop
+            new_pop = []
+        return pop
 
 class GAindividual(GAtoolbox):
     def __init__(self, id, character_obj, fitness=99999):
