@@ -11,8 +11,8 @@ GS = Game_system()
 ref = char(3 ,5 ,8 ,6, 15)
 
 GA = GAtoolbox(wins_goal=75,duration_goal=7,
-               battle_number=1500,gen=10,pop_size=100,
-               weight_duration=1,weight_wins=0)
+               battle_number=1500,gen=300,pop_size=100,
+               weight_duration=0,weight_wins=1)
 
 #### This will be inside the start the algorithm function
 pop = GA.evolve(ref)
@@ -25,3 +25,6 @@ with open("characters.txt", "w") as f:
         f.write(str(individual.character) + "\n")
         f.write("----------------------------- \n\n")
 
+#TODO:
+""" 1. Individuos com mesmo ID mas atributos diferentes. (Olhar como os IDs estao sendo colocados)
+    2. Individuos com fitness 99999 na populacao. Completamente zuados. Sera que e da mutacao? Talvez seja. Verificar."""

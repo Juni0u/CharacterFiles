@@ -1,1300 +1,325 @@
-ID: 132
-Fitness: 2.668
-Level: 22
-PODER: 5
-PRECISAO: 2
-DEFESA: 11
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 37
-
------------------------------ 
-
-ID: 100
-Fitness: 99999
-Level: 22
-PODER: 16
-PRECISAO: 2
-DEFESA: 6
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 100
-Fitness: 99999
-Level: 6
-PODER: 1
-PRECISAO: 2
-DEFESA: 4
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 18
-
------------------------------ 
-
-ID: 130
-Fitness: 2.6033333333333335
-Level: 15
-PODER: 5
-PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 12
- 
-HP: 0
-Nivel Defesa: 24
-
------------------------------ 
-
-ID: 109
-Fitness: 99999
-Level: 31
-PODER: 14
-PRECISAO: 2
-DEFESA: 11
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 44
-
------------------------------ 
-
-ID: 109
-Fitness: 99999
-Level: 19
-PODER: 18
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 4
- 
-HP: 4
-Nivel Defesa: 27
-
------------------------------ 
-
-ID: 292
-Fitness: 4.764666666666667
-Level: 25
-PODER: 16
-PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 31
-
------------------------------ 
-
-ID: 118
-Fitness: 99999
-Level: 18
-PODER: 16
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 26
-
------------------------------ 
-
-ID: 118
-Fitness: 99999
+ID: 1888
+Fitness: 375.0
 Level: 35
-PODER: 16
-PRECISAO: 2
-DEFESA: 13
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 49
-
------------------------------ 
-
-ID: 124
-Fitness: 0.16266666666666652
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 127
-Fitness: 99999
-Level: 34
-PODER: 22
-PRECISAO: 7
-DEFESA: 9
-CONSTITUICAO: 3
- 
-HP: 3
-Nivel Defesa: 44
-
------------------------------ 
-
-ID: 127
-Fitness: 99999
-Level: 32
-PODER: 20
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 12
- 
-HP: 12
-Nivel Defesa: 40
-
------------------------------ 
-
-ID: 268
-Fitness: 3.004
-Level: 19
-PODER: 7
-PRECISAO: 4
-DEFESA: 3
-CONSTITUICAO: 12
- 
-HP: 0
-Nivel Defesa: 27
-
------------------------------ 
-
-ID: 136
-Fitness: 99999
-Level: 34
-PODER: 14
+PODER: 27
 PRECISAO: 11
-DEFESA: 3
-CONSTITUICAO: 13
- 
-HP: 13
-Nivel Defesa: 38
-
------------------------------ 
-
-ID: 136
-Fitness: 99999
-Level: 16
-PODER: 14
-PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 4
- 
-HP: 4
-Nivel Defesa: 25
-
------------------------------ 
-
-ID: 100
-Fitness: 0.2833333333333332
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 145
-Fitness: 99999
-Level: 26
-PODER: 16
-PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 12
- 
-HP: 12
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 145
-Fitness: 99999
-Level: 31
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 15
- 
-HP: 15
-Nivel Defesa: 39
-
------------------------------ 
-
-ID: 124
-Fitness: 0.16266666666666652
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 154
-Fitness: 99999
-Level: 24
-PODER: 18
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 34
-
------------------------------ 
-
-ID: 154
-Fitness: 99999
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 268
-Fitness: 3.004
-Level: 19
-PODER: 7
-PRECISAO: 4
-DEFESA: 3
-CONSTITUICAO: 12
- 
-HP: 0
-Nivel Defesa: 27
-
------------------------------ 
-
-ID: 163
-Fitness: 99999
-Level: 33
-PODER: 20
-PRECISAO: 3
-DEFESA: 6
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 40
-
------------------------------ 
-
-ID: 163
-Fitness: 99999
-Level: 7
-PODER: 5
-PRECISAO: 3
-DEFESA: 3
+DEFESA: 1
 CONSTITUICAO: 3
  
 HP: 3
-Nivel Defesa: 18
-
------------------------------ 
-
-ID: 152
-Fitness: 0.15266666666666673
-Level: 21
-PODER: 15
-PRECISAO: 1
-DEFESA: 2
-CONSTITUICAO: 10
- 
-HP: -2
-Nivel Defesa: 27
-
------------------------------ 
-
-ID: 172
-Fitness: 99999
-Level: 19
-PODER: 16
-PRECISAO: 2
-DEFESA: 2
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 26
-
------------------------------ 
-
-ID: 172
-Fitness: 99999
-Level: 29
-PODER: 16
-PRECISAO: 3
-DEFESA: 6
-CONSTITUICAO: 11
- 
-HP: 11
 Nivel Defesa: 37
 
 ----------------------------- 
 
 ID: 100
-Fitness: 0.2833333333333332
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 181
-Fitness: 99999
-Level: 42
-PODER: 16
-PRECISAO: 10
-DEFESA: 3
-CONSTITUICAO: 20
- 
-HP: 20
-Nivel Defesa: 44
-
------------------------------ 
-
-ID: 181
-Fitness: 99999
-Level: 28
-PODER: 18
+Fitness: 70.0
+Level: 25
+PODER: 27
 PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 12
- 
-HP: 12
-Nivel Defesa: 34
-
------------------------------ 
-
-ID: 124
-Fitness: 0.16266666666666652
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 190
-Fitness: 99999
-Level: 58
-PODER: 30
-PRECISAO: 9
-DEFESA: 7
-CONSTITUICAO: 19
- 
-HP: 19
-Nivel Defesa: 60
-
------------------------------ 
-
-ID: 190
-Fitness: 99999
-Level: 32
-PODER: 16
-PRECISAO: 17
-DEFESA: 1
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 35
-
------------------------------ 
-
-ID: 113
-Fitness: 0.11733333333333373
-Level: 20
-PODER: 16
-PRECISAO: 1
-DEFESA: 4
-CONSTITUICAO: 6
- 
-HP: 0
-Nivel Defesa: 29
-
------------------------------ 
-
-ID: 199
-Fitness: 99999
-Level: 17
-PODER: 14
-PRECISAO: 1
-DEFESA: 6
+DEFESA: 2
 CONSTITUICAO: 3
  
 HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 3948
+Fitness: 300.0
+Level: 22
+PODER: 10
+PRECISAO: 14
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 0
 Nivel Defesa: 28
 
 ----------------------------- 
 
-ID: 199
-Fitness: 99999
-Level: 21
-PODER: 15
-PRECISAO: 3
-DEFESA: 4
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 29
-
------------------------------ 
-
-ID: 124
-Fitness: 0.16266666666666652
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 208
-Fitness: 99999
-Level: 27
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 36
-
------------------------------ 
-
-ID: 208
-Fitness: 99999
-Level: 19
-PODER: 16
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 27
-
------------------------------ 
-
-ID: 292
-Fitness: 3.6033333333333335
-Level: 13
-PODER: 5
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: -1
-Nivel Defesa: 22
-
------------------------------ 
-
-ID: 217
-Fitness: 99999
-Level: 33
-PODER: 20
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
 PRECISAO: 2
-DEFESA: 7
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 41
-
------------------------------ 
-
-ID: 217
-Fitness: 99999
-Level: 28
-PODER: 16
-PRECISAO: 1
-DEFESA: 7
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 38
-
------------------------------ 
-
-ID: 252
-Fitness: 0.2486666666666668
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 226
-Fitness: 99999
-Level: 26
-PODER: 18
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 226
-Fitness: 99999
-Level: 8
-PODER: 1
-PRECISAO: 3
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 22
-
------------------------------ 
-
-ID: 107
-Fitness: 0.2599999999999998
-Level: 20
-PODER: 16
-PRECISAO: 1
-DEFESA: 4
-CONSTITUICAO: 6
- 
-HP: 0
-Nivel Defesa: 29
-
------------------------------ 
-
-ID: 235
-Fitness: 99999
-Level: 39
-PODER: 16
-PRECISAO: 2
-DEFESA: 25
+DEFESA: 2
 CONSTITUICAO: 3
  
 HP: 3
-Nivel Defesa: 64
+Nivel Defesa: 30
 
 ----------------------------- 
 
-ID: 235
-Fitness: 99999
-Level: 25
-PODER: 7
-PRECISAO: 2
-DEFESA: 9
-CONSTITUICAO: 14
- 
-HP: 14
-Nivel Defesa: 37
-
------------------------------ 
-
-ID: 121
-Fitness: 0.503333333333333
-Level: 21
-PODER: 14
-PRECISAO: 2
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 31
-
------------------------------ 
-
-ID: 244
-Fitness: 99999
+ID: 398
+Fitness: 361.0
 Level: 29
-PODER: 18
+PODER: 27
 PRECISAO: 4
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 34
-
------------------------------ 
-
-ID: 244
-Fitness: 99999
-Level: 18
-PODER: 7
-PRECISAO: 3
-DEFESA: 3
-CONSTITUICAO: 12
- 
-HP: 12
-Nivel Defesa: 26
-
------------------------------ 
-
-ID: 121
-Fitness: 0.503333333333333
-Level: 21
-PODER: 14
-PRECISAO: 2
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 31
-
------------------------------ 
-
-ID: 253
-Fitness: 99999
-Level: 30
-PODER: 1
-PRECISAO: 23
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 35
-
------------------------------ 
-
-ID: 253
-Fitness: 99999
-Level: 31
-PODER: 18
-PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 15
- 
-HP: 15
-Nivel Defesa: 36
-
------------------------------ 
-
-ID: 148
-Fitness: 1.682666666666666
-Level: 20
-PODER: 15
-PRECISAO: 1
-DEFESA: 5
-CONSTITUICAO: 6
+DEFESA: 2
+CONSTITUICAO: 3
  
 HP: 3
-Nivel Defesa: 30
-
------------------------------ 
-
-ID: 262
-Fitness: 99999
-Level: 26
-PODER: 21
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 35
-
------------------------------ 
-
-ID: 262
-Fitness: 99999
-Level: 23
-PODER: 18
-PRECISAO: 2
-DEFESA: 4
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 31
-
------------------------------ 
-
-ID: 198
-Fitness: 1.9693333333333332
-Level: 19
-PODER: 14
-PRECISAO: 2
-DEFESA: 6
-CONSTITUICAO: 4
- 
-HP: 1
-Nivel Defesa: 30
-
------------------------------ 
-
-ID: 271
-Fitness: 99999
-Level: 23
-PODER: 14
-PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 30
-
------------------------------ 
-
-ID: 271
-Fitness: 99999
-Level: 30
-PODER: 9
-PRECISAO: 4
-DEFESA: 13
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 45
-
------------------------------ 
-
-ID: 169
-Fitness: 0.10799999999999965
-Level: 16
-PODER: 1
-PRECISAO: 4
-DEFESA: 4
-CONSTITUICAO: 14
- 
-HP: 11
-Nivel Defesa: 26
-
------------------------------ 
-
-ID: 280
-Fitness: 99999
-Level: 12
-PODER: 5
-PRECISAO: 8
-DEFESA: 1
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 20
-
------------------------------ 
-
-ID: 280
-Fitness: 99999
-Level: 28
-PODER: 16
-PRECISAO: 7
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 37
-
------------------------------ 
-
-ID: 252
-Fitness: 0.2486666666666668
-Level: 22
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 289
-Fitness: 99999
-Level: 26
-PODER: 20
-PRECISAO: 4
-DEFESA: 3
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 32
-
------------------------------ 
-
-ID: 289
-Fitness: 99999
-Level: 28
-PODER: 15
-PRECISAO: 2
-DEFESA: 6
-CONSTITUICAO: 12
- 
-HP: 12
-Nivel Defesa: 37
-
------------------------------ 
-
-ID: 196
-Fitness: 1.3753333333333337
-Level: 20
-PODER: 15
-PRECISAO: 1
-DEFESA: 2
-CONSTITUICAO: 9
- 
-HP: 6
-Nivel Defesa: 27
-
------------------------------ 
-
-ID: 298
-Fitness: 99999
-Level: 22
-PODER: 21
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 5
- 
-HP: 5
-Nivel Defesa: 29
-
------------------------------ 
-
-ID: 298
-Fitness: 99999
-Level: 23
-PODER: 16
-PRECISAO: 2
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
 Nivel Defesa: 33
 
 ----------------------------- 
 
-ID: 154
-Fitness: 0.29666666666666686
-Level: 21
-PODER: 14
-PRECISAO: 1
-DEFESA: 2
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 27
-
------------------------------ 
-
-ID: 307
-Fitness: 99999
-Level: 27
-PODER: 20
-PRECISAO: 7
-DEFESA: 3
-CONSTITUICAO: 4
- 
-HP: 4
-Nivel Defesa: 33
-
------------------------------ 
-
-ID: 307
-Fitness: 99999
-Level: 27
-PODER: 5
-PRECISAO: 2
-DEFESA: 5
-CONSTITUICAO: 22
- 
-HP: 22
-Nivel Defesa: 35
-
------------------------------ 
-
-ID: 136
-Fitness: 0.07866666666666688
-Level: 19
-PODER: 8
-PRECISAO: 2
-DEFESA: 2
-CONSTITUICAO: 14
- 
-HP: 5
-Nivel Defesa: 26
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 24
-PODER: 13
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 34
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 24
-PODER: 16
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 31
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
+ID: 398
+Fitness: 178.0
 Level: 26
-PODER: 14
+PODER: 27
 PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 12
+DEFESA: 2
+CONSTITUICAO: 3
  
-HP: 12
-Nivel Defesa: 35
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 21
-PODER: 16
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 5
- 
-HP: 5
+HP: 3
 Nivel Defesa: 31
 
 ----------------------------- 
 
-ID: 316
-Fitness: 99999
-Level: 17
-PODER: 5
-PRECISAO: 2
-DEFESA: 6
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 28
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 30
-PODER: 16
-PRECISAO: 3
-DEFESA: 6
-CONSTITUICAO: 12
- 
-HP: 12
-Nivel Defesa: 38
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
+ID: 100
+Fitness: 70.0
 Level: 25
-PODER: 15
-PRECISAO: 3
-DEFESA: 3
-CONSTITUICAO: 11
+PODER: 27
+PRECISAO: 2
+DEFESA: 2
+CONSTITUICAO: 3
  
-HP: 11
+HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
+PRECISAO: 2
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 6954
+Fitness: 375.0
+Level: 53
+PODER: 27
+PRECISAO: 3
+DEFESA: 27
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 76
+
+----------------------------- 
+
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
+PRECISAO: 2
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 1590
+Fitness: 375.0
+Level: 60
+PODER: 23
+PRECISAO: 24
+DEFESA: 17
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 72
+
+----------------------------- 
+
+ID: 3080
+Fitness: 375.0
+Level: 66
+PODER: 19
+PRECISAO: 24
+DEFESA: 27
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 86
+
+----------------------------- 
+
+ID: 2186
+Fitness: 53.0
+Level: 25
+PODER: 27
+PRECISAO: 1
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
+PRECISAO: 2
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 5115
+Fitness: 190.0
+Level: 27
+PODER: 29
+PRECISAO: 1
+DEFESA: 1
+CONSTITUICAO: 3
+ 
+HP: 3
 Nivel Defesa: 31
 
 ----------------------------- 
 
-ID: 316
-Fitness: 99999
-Level: 41
-PODER: 20
-PRECISAO: 19
-DEFESA: 6
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
+PRECISAO: 2
+DEFESA: 2
 CONSTITUICAO: 3
  
 HP: 3
-Nivel Defesa: 46
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 19
-PODER: 5
-PRECISAO: 1
-DEFESA: 14
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 38
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 24
-PODER: 18
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 34
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 27
-PODER: 21
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 36
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 38
-PODER: 12
-PRECISAO: 19
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 41
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 9
-PODER: 1
-PRECISAO: 2
-DEFESA: 3
-CONSTITUICAO: 11
- 
-HP: 11
-Nivel Defesa: 19
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 10
-PODER: 5
-PRECISAO: 3
-DEFESA: 3
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 20
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 27
-PODER: 21
-PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
- 
-HP: 6
-Nivel Defesa: 36
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 28
-PODER: 20
-PRECISAO: 3
-DEFESA: 9
-CONSTITUICAO: 3
- 
-HP: 3
-Nivel Defesa: 40
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 38
-PODER: 30
-PRECISAO: 1
-DEFESA: 13
-CONSTITUICAO: 3
- 
-HP: 1
-Nivel Defesa: 51
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 20
-PODER: 16
-PRECISAO: 2
-DEFESA: 5
-CONSTITUICAO: 4
- 
-HP: 4
 Nivel Defesa: 30
 
 ----------------------------- 
 
-ID: 316
-Fitness: 99999
-Level: 27
-PODER: 14
+ID: 7204
+Fitness: 111.0
+Level: 25
+PODER: 27
 PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 13
- 
-HP: 13
-Nivel Defesa: 36
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 8
-PODER: 7
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 4
- 
-HP: 4
-Nivel Defesa: 19
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 36
-PODER: 20
-PRECISAO: 7
-DEFESA: 13
+DEFESA: 2
 CONSTITUICAO: 3
  
 HP: 3
-Nivel Defesa: 50
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 46
-PODER: 16
-PRECISAO: 2
-DEFESA: 25
-CONSTITUICAO: 10
- 
-HP: 10
-Nivel Defesa: 69
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 33
-PODER: 21
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 15
- 
-HP: 15
-Nivel Defesa: 37
-
------------------------------ 
-
-ID: 316
-Fitness: 99999
-Level: 23
-PODER: 20
-PRECISAO: 1
-DEFESA: 3
-CONSTITUICAO: 6
- 
-HP: 6
 Nivel Defesa: 30
 
 ----------------------------- 
 
-ID: 316
-Fitness: 99999
-Level: 20
-PODER: 7
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
 PRECISAO: 2
-DEFESA: 3
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 2186
+Fitness: 53.0
+Level: 25
+PODER: 27
+PRECISAO: 1
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 30
+
+----------------------------- 
+
+ID: 7252
+Fitness: 375.0
+Level: 62
+PODER: 25
+PRECISAO: 24
+DEFESA: 17
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 73
+
+----------------------------- 
+
+ID: 2484
+Fitness: 375.0
+Level: 56
+PODER: 26
+PRECISAO: 3
+DEFESA: 31
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 83
+
+----------------------------- 
+
+ID: 1292
+Fitness: 375.0
+Level: 48
+PODER: 27
+PRECISAO: 2
+DEFESA: 11
 CONSTITUICAO: 15
  
 HP: 15
-Nivel Defesa: 28
+Nivel Defesa: 57
 
 ----------------------------- 
 
-ID: 316
-Fitness: 99999
-Level: 21
-PODER: 16
-PRECISAO: 3
-DEFESA: 3
-CONSTITUICAO: 6
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
+PRECISAO: 2
+DEFESA: 2
+CONSTITUICAO: 3
  
-HP: 6
-Nivel Defesa: 28
+HP: 3
+Nivel Defesa: 30
 
 ----------------------------- 
 
-ID: 316
-Fitness: 99999
-Level: 23
-PODER: 17
+ID: 6634
+Fitness: 349.0
+Level: 27
+PODER: 27
 PRECISAO: 1
-DEFESA: 6
-CONSTITUICAO: 6
+DEFESA: 3
+CONSTITUICAO: 3
  
-HP: 6
+HP: 3
 Nivel Defesa: 33
+
+----------------------------- 
+
+ID: 100
+Fitness: 70.0
+Level: 25
+PODER: 27
+PRECISAO: 2
+DEFESA: 2
+CONSTITUICAO: 3
+ 
+HP: 3
+Nivel Defesa: 30
 
 ----------------------------- 
 

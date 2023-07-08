@@ -346,6 +346,8 @@ class GAtoolbox():
             t_group.remove(dead)
             survivors = t_group
             new_pop.append(elite)
+            if gen==self.gen-1:
+                continue
             parents += survivors
             #No final do loop de cima, todos os elites ja estao na nova populacao
             #Com os dois pais, cria-se dois filhos
@@ -357,15 +359,16 @@ class GAtoolbox():
         #Completando a populacao: dois pais sao selecionados aleatoriamente de todos os pais possiveis
         #o primeiro filho e utilizado e o segundo descatardo
         #isso e feito ate completar a populacao
-        for j in range(self.pop_size-len(new_pop)):
-            #print("j = ", j)
-            couple = rd.sample(parents,2)
-            for parent in couple:
-                parents.remove(parent)
-            child,_ = self.reproduction(couple[0],couple[1])
-            childGA = GAindividual(id=self.pop_size+gen*i,character_obj=child,fitness=99999) 
-            new_pop.append(childGA)
-            #print(len(new_pop))
+        if gen != self.gen-1:
+            for j in range(self.pop_size-len(new_pop)):
+                #print("j = ", j)
+                couple = rd.sample(parents,2)
+                for parent in couple:
+                    parents.remove(parent)
+                child,_ = self.reproduction(couple[0],couple[1])
+                childGA = GAindividual(id=self.pop_size+gen*i,character_obj=child,fitness=99999) 
+                new_pop.append(childGA)
+                #print(len(new_pop))
 
 
 
@@ -408,6 +411,7 @@ class GAtoolbox():
             #update population
             pop = new_pop
             new_pop = []
+            print(len(pop))
         return pop
 
 class GAindividual(GAtoolbox):
