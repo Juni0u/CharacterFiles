@@ -8,7 +8,7 @@ import numpy as np
 GS = Game_system()
 
 # Player Character who is going to be the reference
-ref = char(3 ,5 ,8 ,6, 15)
+ref = char(1, 5, 14, 4,17)
 
 GA = GAtoolbox(wins_goal=75,duration_goal=7,
                battle_number=1500,gen=300,pop_size=100,

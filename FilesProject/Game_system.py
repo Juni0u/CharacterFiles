@@ -39,8 +39,6 @@ class Game_system():
         """The attacker calls this function and gives its target as argument.
         It returns true if the attack was successfull, False if not."""
         dices = self.roll_dices()
-        #print("ATK:",self.pre+self.lvlbonus+dices)
-        #print("DEF:",target.defense)
         if (self.pre+self.lvlbonus+dices) > target.defense:
             return True
         else:
@@ -54,7 +52,7 @@ class Game_system():
         """This functions resets the HP of a character to full."""
         self.hp = self.con
 
-    def battle (self, enemy: object, round_limit=25):
+    def battle (self, enemy, round_limit=25):
         """This function executes the battle itself.\n 
         I = Enemy that will be fighting\n
         O = True for ENEMY WIN"""
@@ -62,18 +60,16 @@ class Game_system():
         self.reset_hp()
         enemy.reset_hp()
 
-        #print(round_limit)
-
-        while rounds < round_limit:
+        while rounds < round_limit+1:
+            rounds += 1
             if self.attack(enemy):
                 enemy.update_hp(-self.pdr)
                 if enemy.hp < 1:
                     return False, rounds
             if enemy.attack(self):     
-                self.update_hp(-self.pdr)
+                self.update_hp(-enemy.pdr)
                 if self.hp < 1:
                     return True, rounds
-            rounds += 1
         return False, rounds #if rounds > rounds limit then NPC LOST!
     
     def tourney (self, battle_number, enemy):
@@ -82,7 +78,7 @@ class Game_system():
         wins = 0
         rounds_sum = 0
         for i in range(0,battle_number):
-            battle_result,round_qty = self.battle(enemy)
+            battle_result, round_qty = self.battle(enemy)
             #print("battle ",i," - result = ",battle_result)
             rounds_sum += round_qty
             if battle_result:
@@ -116,7 +112,6 @@ class Character(Game_system):
         if lvl==0:
             self.fix_min_distribution()
             self.lvl = (pdr+pre+defe+con)-7
-
         else:
             self.lvl = lvl
             self.max_sum = self.lvl + 7
