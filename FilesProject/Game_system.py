@@ -431,4 +431,5 @@ class GAindividual(GAtoolbox):
 
     def getFit(self):
         return self.fit
+    #comment
         
