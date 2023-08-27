@@ -1,10 +1,10 @@
-from Game_system import Game_system as gs
-from Game_system import Character as char
-from Game_system import GAtoolbox
 import random as rd
 import numpy as np
+#-----------------------------------
+import GameSystem as gs
+import Character as char
+import GAtoolbox as GAtoolbox
 
-import random
 
 def battle (player, NPC):
     """This function executes the battle itself. 
@@ -43,16 +43,14 @@ def tourney (battle_number, pop, ref):
         wins = 0 
     return result#, rounds
 
-ref = char(15, 3, 5, 8, 6)
-build = char(15, 5, 5, 6, 6)
+ref = char(1, 5, 14, 4, 17)
 
-goal = 75    
-battle_number = 1000
-true_goal = int(battle_number * goal/100)  
+print(ref)
 
-result = tourney(battle_number,[build],ref)
-
-print(result[0]-true_goal)
-
-for each in result:
-    print(abs(each-true_goal))
+offspring1 = []
+offspring2 = []
+A = [0,1,2,3]
+for i in range(2): 
+    i1 = rd.choice(A)
+    if (i1 not in offspring1): offspring1.append(i1)
+for element in A:

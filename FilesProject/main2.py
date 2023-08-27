@@ -1,7 +1,7 @@
-from Game_system import Game_system
-from Game_system import Character as char
-from Game_system import GAtoolbox
-from Game_system import parameter as param
+from FilesProject.GAtoolbox import Game_system
+from FilesProject.GAtoolbox import Character as char
+from FilesProject.GAtoolbox import GAtoolbox
+from FilesProject.GAtoolbox import parameter as param
 import random as rd
 import numpy as np
 

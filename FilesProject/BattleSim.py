@@ -1,4 +1,4 @@
-from FilesProject.Game_system import Character as char
+from FilesProject.GAtoolbox import Character as char
 import random as rd
 import numpy as np
 
