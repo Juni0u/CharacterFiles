@@ -15,6 +15,7 @@ class parameter(object):
 class Game_system():
     def roll_dices(self):
     #TODO: Is there a critical role?    
+        """Teste for commit"""
         """This function rolls 3 1d6 and returns the sum of them."""
         dice1 = rd.randint(1,6)  
         dice2 = rd.randint(1,6) 
