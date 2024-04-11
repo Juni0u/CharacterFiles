@@ -64,23 +64,38 @@ class Character():
             dice3 = rd.randint(1,6)
             return (dice1+dice2+dice3)
     
-    def battle(self,target:"Character",drawWin:bool=False,drawLimit:int=10) -> bool:
+    def battle(self,target:"Character",drawWin:bool=False,drawLimit:int=10) -> list[bool,int]:
         """battle between caller character and [target].
         the fuction caller always attacks first.
         if [drawWin] is [True], draws are wins for caller. if [False], are losses.
         [drawLimit] is number of turns without end to declare a draw        
         returns [True] for called win, [False] for target win
-        returns number of turns battle took
+        and number of rounds
         """
         self.reset_hp()
         target.reset_hp()
-        #TODO BATTLE!!!!
+        rounds=0
 
+        while rounds <= drawLimit:
+            if self.attack(target=target):
+                target.update_hp(-self.pdr)
+                if target.hp < 1:
+                    return [True, rounds]
+            if target.attack(target=self):
+                self.update_hp(-target.pdr)
+                if self.hp < 1:
+                    return [False, rounds]
+            rounds += 1
+        if drawWin:
+            return [True, rounds]
+        else:
+            return [False, rounds]       
 
 
 def demo():
     tyr = Character(pdr=5,pre=5,defe=10,con=5)
     akin = Character(5,10,5,5)
+    print(tyr.battle(akin,True,5))
 
 if __name__ == "__main__":
     demo()
