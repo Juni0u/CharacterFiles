@@ -1,95 +1,95 @@
 import random as rd
+from Character import Character
 
 class GAtoolbox():
     """Toolbox used to integrate GA methods to the code"""
     
-    def __init__(self,bin_rep=5, mut_prob=0.03):
-        """binrep = how many bits represents each atribute
-        mut_atrib = how many atributes go through mutation each time
-        mut_prob = Mutation probability (between 0 and 1)"""
-#        self.parameters = parameter(PARAM_FILE) #TODO: Adjust a parameter file
-        self.bin_rep = bin_rep
+    def __init__(self, reference:Character, goal:float, battle_number:int=1000, pop_size:int=100, gen:int=300, elitism:float=5, mut_prob:float=3):
+        """[ref] -> reference character
+        [goal] -> % of wins desired for output character
+        [battle_number] -> how many times reference character will battle each character of the population
+        [pop_size] -> number of characters in the population 
+        [gen] -> for how many generations the code will run
+        [elitism] -> % of the characters from the population that will continue to the next generation
+        [mut_prob] -> % chance of mutation probability"""
+        self.ref = reference
+        self.battle_number = battle_number
+        self.goal = goal*battle_number/100 #number of desided wins out of battle_number
+        self.pop_size = pop_size
+        self.gen = gen
+        self.elite = elitism
         self.mut_prob = mut_prob
+        self.pop = self.generate_initial_population()
 
-        if mut_prob > 1 or mut_prob < 0:
-            print("mut_prob out of bounds, value set to 0.03.")
-            self.mut_prob = 0.03
+    def generate_initial_population(self):
+        population = []
+        for i in range(0,self.pop_size):
+            pdr = self.ref.pdr + rd.randint(0,5)
+            pre = self.ref.pre + rd.randint(0,5)
+            defe = self.ref.defe + rd.randint(0,5)
+            con = self.ref.con + rd.randint(0,5)
+            population.append(Character(pdr,pre,defe,con))
+        return population
 
-    def dec2bin(self,n):
-        """Input: A number in decimal
-        Output: The same in [bin_rep] bit binary"""
-        output = bin(n)[2:].zfill(self.bin_rep)
-        return(output)
-    
-    def char2gene(self,char):
-        """Input: Character (object)
-        Output: Character's attributes coded into binary"""
-        binPdr=self.dec2bin(char.pdr)
-        binPre=self.dec2bin(char.pre)
-        binDefe=self.dec2bin(char.defe)
-        binCon=self.dec2bin(char.con) 
-#        print("Pdr"+binPdr+",Pre"+binPre+",Defe"+binDefe+",Con"+binCon)
-        return binPdr+binPre+binDefe+binCon
-    
-    def gene2char(self,bin):
-        """Input: Binary
-        Output: List [PDR,PRE,DEFE,CON]"""
-        output = []
-#        print("bin:",bin)
-        for i in range(0,len(bin),self.bin_rep):
-            #print(i)
-            output.append(int(bin[i:i+self.bin_rep],2))
-        return output
-    
-    def crossover (self,gene1,gene2):
-        """[atrib1][atrib2][atrib3][atrib4]
-        each time one of the three beginning positions will be chosen (beginning of atrib1, 2 or 3)
-        and also a final position too, after the beginning one.
-        One part will be from gene1 and the other from gene2"""
-        #               10
-        # 01234  56789  01234  56789
-        #[00000][00000][00000][00000]
-        gene1 = list(gene1)
-        gene2 = list(gene2)
-        gene_out1 = [None]*self.bin_rep*4
-        gene_out2 = [None]*self.bin_rep*4
-        start = [i*self.bin_rep for i in range(4)]              #possible positions to beginning positions of cut
-        #print(start)
-        end = [i*self.bin_rep+self.bin_rep-1 for i in range(4)] #possible positions to ending positions of cut
-        #print(end)
-        cut_in = rd.choice(start)
-        cut_out = rd.choice(end)
-        while (cut_out < cut_in):
-            cut_out = rd.choice(end)
-        #print("cutIN: ",cut_in,"// cutOUT: ",cut_out)  
+    def evaluation(self, character:Character) -> float:
+        """evaluates individual in respect to the quantity of [wins] and [rounds] it had in a tourney
+        returns individual fitness
+        fit is distance from goal. 0 is best."""
+        rounds, wins = self.tourney(battle_number=self.battle_number, target=character)
+        fit =  abs(self.goal - wins) #TODO: do a weighted sum to considerer rounds duration in evaluation too
+        return fit
 
-        for i in range (cut_in,cut_out+1):
-            gene_out1[i] = gene1[i]
-            gene_out2[i] = gene2[i]
+    def tourney (self, battle_number:int, target:Character) -> list[float,int]:
+        """[reference] battles [target] [battle_number] times
+        returns [average rounds number],[win number]
+        used by evalution method"""
+        wins = 0
+        rounds = 0
+        for _ in range(battle_number):
+            battle_result, round_qty = self.ref.battle(target=target,drawWin=False, drawLimit=10)
+            rounds += round_qty
+            if not battle_result: #battle result is true only if caller wins. i want the wins of target!
+                wins += 1
+        rounds = rounds/battle_number
+        return rounds, wins
+    
+    def crossover (self,char1:Character, char2:Character) -> tuple[Character, Character]: 
+        """produces 2 children from [char1] and [char2]"""
+        gene1 = char1.gene 
+        gene2 = char2.gene 
+
+        child1_gene = []
+        child2_gene = []
+        cut_point = 1 #half
+
+        for i in range(0,4):
+            if i <= cut_point:
+                child1_gene.append(gene1[i]) 
+                child2_gene.append(gene2[i]) 
+            else:
+                child1_gene.append(gene2[i]) 
+                child2_gene.append(gene1[i]) 
+
+        child1 = Character(pdr=child1_gene[0], pre=child1_gene[1], defe=child1_gene[2], con=child1_gene[3])
+        child2 = Character(pdr=child2_gene[0], pre=child2_gene[1], defe=child2_gene[2], con=child2_gene[3])
+        return child1, child2   
+
+    def mutation (self,character:Character) -> Character:
+        """every atribute has a chance to mutate
+        returns character (mutated if managed to pass in probability check)"""
+        char_gene = character.gene
+        for i in range(0,4):
+            if rd.random() <= self.mut_prob:
+                mutation_value = rd.randint(-5,5)
+                while mutation_value==0:
+                    mutation_value = rd.randint(-5,5)
+                char_gene[i] += mutation_value
+        character.set_atributes(atribute_list=char_gene)
+        return character
+    
+    def evolve(self):
+        pass
             
-        for i in range(0,len(gene_out1)):
-            if gene_out1[i] is None:
-                gene_out1[i]=gene2[i]
-            if gene_out2[i] is None:
-                gene_out2[i]=gene1[i]
-
-        gene_out1 = "".join(gene_out1)
-        gene_out2 = "".join(gene_out2)     
-        return gene_out1, gene_out2
-
-    def mutation (self,gene):
-        #print("in: ", gene)
-        gene = list(gene)
-        for i in range(0,len(gene)-1):
-            prob = rd.random()
-            if prob < self.mut_prob:
-                if gene[i] == "0":
-                    gene[i] = "1"
-                else:
-                    gene[i] = "0"
-        #print("out ", "".join(gene))
-        #print()
-        return "".join(gene)    
     
 
         

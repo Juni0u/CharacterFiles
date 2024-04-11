@@ -13,18 +13,20 @@ class Character():
         self.pre = pre 
         self.defe = defe
         self.con = con
-        self.gene = [self.pdr, self.pre, self.defe, self.con] 
-        self.fit = 0
+
         # lvl could be one of the directly changed variables, but i decided not to.
         # because changing the lvl would mean that or  we have too many atributes (if lvl went down) or had atributes left to put (if lvl went up)
         ## the first one is not allowed, the second one is strange. why would a player not distribute one atribute? theres nothing to gain by holding it.
         ## the lvl is an implicit part of the game as it is accounted in both atk and defense. so in this case, lvl act as a bonus based on the sum of the atributes
-
-
         self.update_lvl()
         self.lvlbonus = int(self.lvl*3/4)
         self.defense = self.defe + self.lvlbonus + 10
         self.hp = con
+
+        #GA stuff
+        self.gene = [self.pdr, self.pre, self.defe, self.con] 
+        self.fit = 0
+
 
     def __str__(self) -> str:
         return ("Level: "+ str(self.lvl)+"\n"+
@@ -34,6 +36,22 @@ class Character():
                 "CONSTITUITION: "+ str(self.con)+"\n \n"+
                 "HP: "+ str(self.hp)+"\n"+
                 "Defense Level: "+str(self.defense)+"\n")   
+    
+    def fix_min_atributes(self) -> None:
+        """theres a minimum for each atribute. this fuction makes sure the character fits in this condition."""
+        if self.pdr < 1: self.pdr += 1
+        if self.pre < 1: self.pre += 1
+        if self.defe < 1: self.defe +1
+        if self.con < 3: self.con += (3 - self.con)
+        self.update_lvl()
+
+    def set_atributes (self, atribute_list:list[int]) -> None:
+        self.pdr = atribute_list[0]
+        self.pre = atribute_list[1]
+        self.defe = atribute_list[2]
+        self.con = atribute_list[3]
+        self.gene = [self.pdr, self.pre, self.defe, self.con] 
+        self.update_lvl()
 
     def attack(self, target:"Character") -> bool:
         """The attacker calls this function and gives its target as argument.
@@ -47,6 +65,8 @@ class Character():
     def update_lvl (self) -> None:
         """Updates character lvl"""
         self.lvl = (self.pdr + self.pre + self.defe + self.con) - 7
+        self.lvlbonus = int(self.lvl*3/4)
+        self.defense = self.defe + self.lvlbonus + 10
     
     def update_hp (self, value:int) -> None:
         """This function updates the HP of a character."""
@@ -95,7 +115,6 @@ class Character():
 def demo():
     tyr = Character(pdr=5,pre=5,defe=10,con=5)
     akin = Character(5,10,5,5)
-    print(tyr.battle(akin,True,5))
 
 if __name__ == "__main__":
     demo()
