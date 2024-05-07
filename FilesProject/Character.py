@@ -1,4 +1,6 @@
 import random as rd
+import uuid
+
 
 class Character():        
     def __init__(self, pdr:int,pre:int,defe:int,con:int):
@@ -8,40 +10,42 @@ class Character():
         - Bonus Point depeding on the Race. Here this bonus is considered by the
         distribution of lvl+1 points. The extra point is the bonus point. [1points]
         - So the max sum each character can have is lvl + 6 + 1 = lvl + 7"""
+        self.id = uuid.uuid4()
 
         self.pdr = pdr
         self.pre = pre 
         self.defe = defe
         self.con = con
-
+        self.fix_min_atributes()
+        self.gene = [pdr,pre,defe,con]
+        self.atrib_proportion()
+        
         # lvl could be one of the directly changed variables, but i decided not to.
         # because changing the lvl would mean that or  we have too many atributes (if lvl went down) or had atributes left to put (if lvl went up)
         ## the first one is not allowed, the second one is strange. why would a player not distribute one atribute? theres nothing to gain by holding it.
         ## the lvl is an implicit part of the game as it is accounted in both atk and defense. so in this case, lvl act as a bonus based on the sum of the atributes
-        self.update_lvl()
-        self.lvlbonus = int(self.lvl*3/4)
-        self.defense = self.defe + self.lvlbonus + 10
         self.hp = con
 
-        #GA stuff
-        self.gene = [self.pdr, self.pre, self.defe, self.con] 
-        self.fit = 0
-
-
     def __str__(self) -> str:
-        return ("Level: "+ str(self.lvl)+"\n"+
-                "POWER: "+ str(self.pdr)+"\n"+
-                "PRECISION: "+ str(self.pre)+ "\n"+
-                "DEFENSE: "+ str(self.defe) +"\n"+
-                "CONSTITUITION: "+ str(self.con)+"\n \n"+
-                "HP: "+ str(self.hp)+"\n"+
-                "Defense Level: "+str(self.defense)+"\n")   
+        return (f"Level {self.lvl}, [{self.pdr},{self.pre},{self.defe},{self.con}], [{self.proportion[0]},{self.proportion[1]},{self.proportion[2]},{self.proportion[3]}]")
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Character):
+            return self.id == other.id
+        return False
     
+    def atrib_proportion(self) -> None:
+        proportion = []
+        total = sum(self.gene)
+        for atribute in self.gene:
+            proportion.append(round(atribute/total,2))
+        self.proportion = proportion
+
     def fix_min_atributes(self) -> None:
-        """theres a minimum for each atribute. this fuction makes sure the character fits in this condition."""
-        if self.pdr < 1: self.pdr += 1
-        if self.pre < 1: self.pre += 1
-        if self.defe < 1: self.defe +1
+        """Theres a minimum for each atribute. This fuction makes sure the character fits in this condition."""
+        if self.pdr < 1: self.pdr = 1
+        if self.pre < 1: self.pre = 1
+        if self.defe < 1: self.defe =1
         if self.con < 3: self.con += (3 - self.con)
         self.update_lvl()
 
@@ -72,7 +76,7 @@ class Character():
         """This function updates the HP of a character."""
         self.hp = self.hp + value
 
-    def reset_hp (self):
+    def reset_hp (self) -> None:
         """This functions resets the HP of a character to full."""
         self.hp = self.con
 
@@ -115,6 +119,7 @@ class Character():
 def demo():
     tyr = Character(pdr=5,pre=5,defe=10,con=5)
     akin = Character(5,10,5,5)
+    print(akin)
 
 if __name__ == "__main__":
     demo()
